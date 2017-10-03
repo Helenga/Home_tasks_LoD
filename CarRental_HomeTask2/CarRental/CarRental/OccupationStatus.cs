@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CarRental
 {
-    interface IAdministratorFunctions
+    public enum OccupationStatus
     {
-        IEnumerable<Car> GetAllCars();
-
-        void AddCar(Car car);
+        Free,
+        Reserved,
+        OnCheckingUp
     }
 }

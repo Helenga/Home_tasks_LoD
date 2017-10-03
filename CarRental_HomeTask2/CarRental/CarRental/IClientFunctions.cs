@@ -9,6 +9,9 @@ namespace CarRental
     interface IClientFunctions
     {
         IEnumerable<Car> GetAllAvailableCars(DateTime dateOfReservation);
-        void ReserveThisCar(Car car);
+
+        Car ChoseCarToReserve();
+
+        void ReserveChoosenCar(Car car);
     }
 }

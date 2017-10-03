@@ -10,12 +10,17 @@ namespace CarRental
     {
         public IEnumerable<Car> GetAllAvailableCars(DateTime dateOfReservation)
         {
-            
+            // делает запрос к сервису
         }
 
-        public void ReserveThisCar(Car car)
+        public Car ChoseCarToReserve()
         {
-            
+
+        }
+
+        public void ReserveChoosenCar(Car car)
+        {
+            // послать фио и выбранную машину в сервис
         }
 
         public string FIO { get; set; }
