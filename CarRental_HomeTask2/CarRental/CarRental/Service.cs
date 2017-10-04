@@ -6,31 +6,49 @@ using System.Threading.Tasks;
 
 namespace CarRental
 {
-    class Service
+    class Service : IAdministratorFunctions, IClientFunctions
     {
-        public void AddNewCar(Car car)
-        {
-            string _model = "";
-            string _color = "";
-            int _id = 0;
-            OccupationStatus _status = OccupationStatus.Free;
-            // реализовать получение параметров
+        ReservationsDB _reservationDB;
+        CarsDB _carsDB;
 
-            Car newCar = new Car(_id, _model, _color, _status); 
-            AllCars.ToList<Car>().Add(newCar);
+        //IAdministratorFunctions
+        public void AddCar(int id, string model, string color)
+        {
+            _carsDB.AddNewCar(id, model, color);
         }
 
         public IEnumerable<Car> GetAllCars()
         {
-            return AllCars;
+            return _carsDB.AllCars;
         }
 
+        // IClientFunctions
+        public Car ChoseCarToReserve()
+        {
+            
+        }
 
-        // функции для обработки событий клиента
-        // функции для обработки событий админа
+        // min = 1 day, max = 60 days
+        public IEnumerable<Car> GetAllAvailableCars(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
+        {
+            if (AreDatesValid(firstDayOfReservation, lastDayOfReservation))
+            {
+                return _carsDB.SelectCarsWhichAvailableIn(firstDayOfReservation, lastDayOfReservation);
+            }
+            else
+            {
+                throw new ArgumentException("Passed dates are not valid");
+            }
+        }
 
-        public IEnumerable<Car> AllCars { get; private set; }
+        public void ReserveChoosenCar(Car car)
+        {
+            
+        }
 
-        private Dictionary<Client, Car> _reservedCars;
+        public bool AreDatesValid (DateTime firstDay, DateTime lastDay)
+        {
+            return firstDay.AddDays(1) <= lastDay  && firstDay.AddDays(59) < lastDay;
+        }
     }
 }

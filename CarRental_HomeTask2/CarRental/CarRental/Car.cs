@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CarRental
 {
-    public class Car
+    class Car
     {
-        public Car(int id, string model, string color, OccupationStatus occupationStatus)
+        public Car(int id, string model, string color)
         {
             ID = id;
             Model = model;
             Color = color;
-            _occupationStatus = occupationStatus;
+            _occupationStatus = OccupationStatus.Free;
             _rentsLastBeforeCheckingUp = 10;
         }
 
@@ -51,8 +51,8 @@ namespace CarRental
 
         private OccupationStatus _occupationStatus;
 
-        private DateTime _unavailableFrom; // недоступен c
-        private DateTime _unavailableTo; // до
+        public DateTime UnavailableFrom { get; } // недоступен c
+        public DateTime UnavailableTo { get; } // до
         // потом 
         private byte _rentsLastBeforeCheckingUp; // осталось аренд до помещения в техцентр
     }

@@ -10,6 +10,6 @@ namespace CarRental
     {
         IEnumerable<Car> GetAllCars();
 
-        void AddCar(Car car);
+        void AddCar(int id, string model, string color);
     }
 }

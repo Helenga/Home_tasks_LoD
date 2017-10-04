@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace CarRental
 {
-    class Client : IClientFunctions
+    class Client
     {
-        public IEnumerable<Car> GetAllAvailableCars(DateTime dateOfReservation)
+        IClientFunctions service = new Service();
+
+        public IEnumerable<Car> FindCars(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {
-            // делает запрос к сервису
+            return service.GetAllAvailableCars(firstDayOfReservation, lastDayOfReservation);
         }
 
         public Car ChoseCarToReserve()
