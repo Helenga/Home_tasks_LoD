@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarRental
 {
@@ -23,15 +20,10 @@ namespace CarRental
         }
 
         // IClientFunctions
-        public Car ChoseCarToReserve()
-        {
-            
-        }
 
-        // min = 1 day, max = 60 days
         public IEnumerable<Car> GetAllAvailableCars(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {
-            if (AreDatesValid(firstDayOfReservation, lastDayOfReservation))
+            if (firstDayOfReservation.AddDays(1) <= lastDayOfReservation && firstDayOfReservation.AddDays(59) < lastDayOfReservation)
             {
                 return _carsDB.SelectCarsWhichAvailableIn(firstDayOfReservation, lastDayOfReservation);
             }
@@ -41,14 +33,16 @@ namespace CarRental
             }
         }
 
-        public void ReserveChoosenCar(Car car)
+        public void ReserveChoosenCar(Client client, Car car)
         {
-            
-        }
-
-        public bool AreDatesValid (DateTime firstDay, DateTime lastDay)
-        {
-            return firstDay.AddDays(1) <= lastDay  && firstDay.AddDays(59) < lastDay;
+            if (!_reservationDB.DoesClientHaveReservation(client))
+            {
+                _reservationDB.ReservedCars.Add(client, car);
+            }
+            else
+            {
+                throw new Exception("The client already has a reservation");
+            }
         }
     }
 }

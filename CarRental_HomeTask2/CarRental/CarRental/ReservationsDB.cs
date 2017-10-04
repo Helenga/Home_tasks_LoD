@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarRental
 {
     abstract class ReservationsDB
     {
-        private Dictionary<Client, Car> _reservedCars;
+        public Dictionary<Client, Car> ReservedCars { get; private set; }
 
         public void AddReservation(Client client, Car car)
         {
-
+            ReservedCars.Add(client, car);
         }
 
         public bool DoesClientHaveReservation(Client client)
         {
-
+            return ReservedCars.ContainsKey(client);
         }
 
         public void DeleteReservation(Client client)

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarRental
 {
@@ -15,14 +12,9 @@ namespace CarRental
             return service.GetAllAvailableCars(firstDayOfReservation, lastDayOfReservation);
         }
 
-        public Car ChoseCarToReserve()
-        {
-
-        }
-
         public void ReserveChoosenCar(Car car)
         {
-            // послать фио и выбранную машину в сервис
+            service.ReserveChoosenCar(this, car);
         }
 
         public string FIO { get; set; }
