@@ -18,7 +18,7 @@ namespace CarRental
             List<Car> AvailableCars = new List<Car>();
             foreach (Car car in AllCars)
             {
-                if (car.IsFreeToRent())
+                if (car.IsFreeToRentIn(firstDay, lastDay))
                 {
                     AvailableCars.Add(car);
                 }

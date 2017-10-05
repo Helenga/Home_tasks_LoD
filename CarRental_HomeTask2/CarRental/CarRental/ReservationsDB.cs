@@ -19,7 +19,7 @@ namespace CarRental
 
         public void DeleteReservation(Client client)
         {
-
+            ReservedCars.Remove(client);
         }
     }
 }
