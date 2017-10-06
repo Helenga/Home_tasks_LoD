@@ -1,22 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace CarRental
 {
     class Client
     {
-        IClientFunctions service = new Service();
-
-        public IEnumerable<Car> FindCars(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
+        public Client(string fio)
         {
-            return service.GetAllAvailableCars(firstDayOfReservation, lastDayOfReservation);
+            FIO = fio;
         }
 
-        public void ReserveChoosenCar(Car car)
+        IClientFunctions service = new ClientService();
+
+        public IEnumerable<Car> CreateFindCarsQuery(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {
-            service.ReserveChoosenCar(this, car);
+            _firstDayOfReservation = firstDayOfReservation;
+            _lastDayOfReservation = lastDayOfReservation;
+            return service.GetAllAvailableCars(_firstDayOfReservation, _lastDayOfReservation);
         }
 
-        public string FIO { get; set; }
+        public void CreateReserveCarQuery(Car car)
+        {
+            service.ReserveChoosenCar(this.FIO, car.ID, _firstDayOfReservation, _lastDayOfReservation);
+        }
+
+        public string FIO { get; private set; }
+
+        //organize cash for next query
+        private DateTime _firstDayOfReservation;
+        private DateTime _lastDayOfReservation;
     }
 }

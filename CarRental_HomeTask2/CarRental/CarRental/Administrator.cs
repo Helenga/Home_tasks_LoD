@@ -5,7 +5,7 @@ namespace CarRental
 {
     class Administrator
     {
-        IAdministratorFunctions service = new Service();
+        IAdministratorFunctions service = new AdministratorService();
 
         public void CreateAddCarQuery(int id, string model, string color)
         {
@@ -16,7 +16,5 @@ namespace CarRental
         {
             return service.GetAllCars();
         }
-
-        private string _accessKey { get; } // ключ доступа
     }
 }

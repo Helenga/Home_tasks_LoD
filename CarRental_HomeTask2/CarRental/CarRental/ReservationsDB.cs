@@ -1,25 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CarRental
 {
-    abstract class ReservationsDB
+    class ReservationsDB
     {
-        public Dictionary<Client, Car> ReservedCars { get; private set; }
+        private static List<Reservation> ReservedCars; // одинаковый для любого экземпляра сервиса
 
-        public void AddReservation(Client client, Car car)
+        public void AddReservation(string clientName, int carID, DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {
-            ReservedCars.Add(client, car);
+            Reservation reservation = new Reservation(clientName, carID, firstDayOfReservation, lastDayOfReservation);
+            ReservedCars.Add(reservation);
         }
 
-        public bool DoesClientHaveReservation(Client client)
+        public bool DoesClientHaveReservation(string clientName)
         {
-            return ReservedCars.ContainsKey(client);
+            return ReservedCars.Exists(reservation => reservation.Renter == clientName);
         }
 
-        public void DeleteReservation(Client client)
+        // automatically deletes expired reservations
+        private void ReservationExpirationControl(Car car)
         {
-            ReservedCars.Remove(client);
+            ReservedCars.RemoveAll(reservation => reservation.UnavailableTo == DateTime.Now);
+        }
+
+        public bool IsFreeToRentIn(DateTime from, DateTime to)
+        {
+            // ни одна из точек не лежит в границах существующей резервации
+            return ReservedCars.All(reservation => (reservation.UnavailableFrom > from) &&
+                                            (reservation.UnavailableTo < from) &&
+                                            (reservation.UnavailableFrom > to) &&
+                                            (reservation.UnavailableTo < to) &&
+                                            !(
+                                              (reservation.UnavailableFrom >= from) &&
+                                              (reservation.UnavailableTo <= to)
+                                            ));
+        }
+
+        public DateTime LastReservationEnds()
+        {
+            return ReservedCars.Max(reservation => reservation.UnavailableTo);
         }
     }
 }
