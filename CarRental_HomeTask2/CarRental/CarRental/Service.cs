@@ -5,7 +5,7 @@
         public Service()
         {
             _reservationsDB = new ReservationsDB();
-            CarsDB _carsDB = new CarsDB();
+            _carsDB = new CarsDB();
             maxNumberOfDaysReservation = 60;
         }
         protected ReservationsDB _reservationsDB;

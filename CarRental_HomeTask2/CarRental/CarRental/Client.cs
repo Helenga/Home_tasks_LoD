@@ -26,6 +26,7 @@ namespace CarRental
         }
 
         [Required]
+        [StringLength(50, ErrorMessageResourceType = typeof(ArgumentException), MinimumLength = 5)]
         public string FIO { get; private set; }
 
         //organize cash for next query

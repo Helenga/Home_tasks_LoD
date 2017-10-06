@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Exceptions;
 
 namespace CarRental
 {
@@ -13,7 +14,7 @@ namespace CarRental
             }
             else
             {
-                throw new ArgumentException("Passed dates are not valid");
+                throw new DatesAreNotValid();
             }
         }
 
@@ -28,19 +29,19 @@ namespace CarRental
                 }
                 else
                 {
-                    throw new Exception("The car is unavailable during this time");
+                    throw new CarIsUnavailable();
                 }
             }
             else
             {
-                throw new Exception("The client already has a reservation");
+                throw new TheClientAlreadyHasReservation();
             }
         }
 
         private bool IsNumberOfDaysLessThanMaximumTerm(DateTime firstDay, DateTime lastDay)
         {
-            return (firstDay.AddDays(1) <= lastDay) && 
-                   (firstDay.AddDays(maxNumberOfDaysReservation - 1) < lastDay);
+            return (firstDay.AddDays(1) >= firstDay) && 
+                   (firstDay.AddDays(maxNumberOfDaysReservation - 1) >= lastDay);
         }
     }
 }

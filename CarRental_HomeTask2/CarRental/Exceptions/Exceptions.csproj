@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarIDAleradyExists.cs" />
+    <Compile Include="CarIsUnavailable.cs" />
     <Compile Include="CarRentalException.cs" />
+    <Compile Include="DatesAreNotValid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TheClientAlreadyHasReservation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
