@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CarRental
 {
-    interface IClientFunctions
+    public interface IClientFunctions
     {
         IEnumerable<Car> GetAllAvailableCars(DateTime firstDayOfReservation, DateTime lastDayOfReservation);
 

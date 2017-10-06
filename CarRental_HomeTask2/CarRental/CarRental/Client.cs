@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 namespace CarRental
 {
-    class Client
+    public class Client
     {
         public Client(string fio)
         {
             FIO = fio;
+            service = new ClientService();
         }
 
-        IClientFunctions service = new ClientService();
+        IClientFunctions service;
 
         public IEnumerable<Car> CreateFindCarsQuery(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {
@@ -23,6 +25,7 @@ namespace CarRental
             service.ReserveChoosenCar(this.FIO, car.ID, _firstDayOfReservation, _lastDayOfReservation);
         }
 
+        [Required]
         public string FIO { get; private set; }
 
         //organize cash for next query

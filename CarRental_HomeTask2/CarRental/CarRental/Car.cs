@@ -1,6 +1,7 @@
-﻿namespace CarRental
+﻿using System.ComponentModel.DataAnnotations;
+namespace CarRental
 {
-    class Car
+    public class Car
     {
         public Car(int id, string model, string color)
         {
@@ -14,9 +15,11 @@
         {
             _checkUpControl.SendToCheckUpOnTime();
         }
-
+        [Required]
         public string Model { get; }
+        [Required]
         public string Color { get; }
+        [Required]
         public int ID { get; } // уникальный идентификатор авто
         private CheckUpControl _checkUpControl;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CarRental
 {
-    class AdministratorService : Service, IAdministratorFunctions
+    public class AdministratorService : Service, IAdministratorFunctions
     {
         public void AddCar(int id, string model, string color)
         {

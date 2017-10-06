@@ -3,9 +3,13 @@ using System.Collections.Generic;
 
 namespace CarRental
 {
-    class Administrator
+    public class Administrator
     {
-        IAdministratorFunctions service = new AdministratorService();
+        public Administrator()
+        {
+            service = new AdministratorService();
+        }
+        IAdministratorFunctions service;
 
         public void CreateAddCarQuery(int id, string model, string color)
         {

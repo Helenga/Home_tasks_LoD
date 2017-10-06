@@ -1,9 +1,15 @@
 ﻿namespace CarRental
 {
-    class Service
+    public class Service
     {
-        protected ReservationsDB _reservationsDB = new ReservationsDB();
-        protected CarsDB _carsDB = new CarsDB();
-        protected byte maxNumberOfDaysReservation = 60;
+        public Service()
+        {
+            _reservationsDB = new ReservationsDB();
+            CarsDB _carsDB = new CarsDB();
+            maxNumberOfDaysReservation = 60;
+        }
+        protected ReservationsDB _reservationsDB;
+        protected CarsDB _carsDB;
+        protected byte maxNumberOfDaysReservation;
     }   
 }

@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Exceptions;
 
 namespace CarRental
 {
-    class CarsDB
+    public class CarsDB
     {
         private static List<Car> _allCars; // одинаковый для любого экземпляра сервиса
+
+        static CarsDB()
+        {
+            _allCars = new List<Car>();
+        }
 
         public IEnumerable<Car> ReturnListOfCars()
         {
@@ -14,8 +20,15 @@ namespace CarRental
 
         public void AddNewCar(int id, string model, string color)
         {
-            Car car = new Car(id, model, color);
-            _allCars.Add(car);
+            if (IsIdUnique(id))
+            {
+                Car car = new Car(id, model, color);
+                _allCars.Add(car);
+            }
+            else
+            {
+                throw new CarIDAleradyExists();
+            }
         }
 
         public IEnumerable<Car> SelectCarsWhichAvailableIn(DateTime firstDay, DateTime lastDay)
@@ -35,6 +48,11 @@ namespace CarRental
         public void RefreshCarStatus(int id)
         {
             _allCars.Find(car => car.ID == id).CheckStatus();
+        }
+
+        private bool IsIdUnique(int carID)
+        {
+            return !_allCars.Exists(car => car.ID == carID);
         }
     }
 }

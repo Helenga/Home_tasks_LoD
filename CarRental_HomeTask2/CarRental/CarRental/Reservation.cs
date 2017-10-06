@@ -2,7 +2,7 @@
 
 namespace CarRental
 {
-    class Reservation
+    public class Reservation
     {
         public Reservation(string renter, int carID, DateTime unavailableFrom, DateTime unavailableTo)
         {

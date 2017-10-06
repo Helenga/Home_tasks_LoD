@@ -4,31 +4,36 @@ using System.Linq;
 
 namespace CarRental
 {
-    class ReservationsDB
+    public class ReservationsDB
     {
-        private static List<Reservation> ReservedCars; // одинаковый для любого экземпляра сервиса
+        private static List<Reservation> _reservedCars; // одинаковый для любого экземпляра сервиса
+
+        static ReservationsDB()
+        {
+            _reservedCars = new List<Reservation>();
+        }
 
         public void AddReservation(string clientName, int carID, DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {
             Reservation reservation = new Reservation(clientName, carID, firstDayOfReservation, lastDayOfReservation);
-            ReservedCars.Add(reservation);
+            _reservedCars.Add(reservation); 
         }
 
         public bool DoesClientHaveReservation(string clientName)
         {
-            return ReservedCars.Exists(reservation => reservation.Renter == clientName);
+            return _reservedCars.Exists(reservation => reservation.Renter == clientName);
         }
 
         // automatically deletes expired reservations
         private void ReservationExpirationControl(Car car)
         {
-            ReservedCars.RemoveAll(reservation => reservation.UnavailableTo == DateTime.Now);
+            _reservedCars.RemoveAll(reservation => reservation.UnavailableTo == DateTime.Now);
         }
 
         public bool IsFreeToRentIn(DateTime from, DateTime to)
         {
             // ни одна из точек не лежит в границах существующей резервации
-            return ReservedCars.All(reservation => (reservation.UnavailableFrom > from) &&
+            return _reservedCars.All(reservation => (reservation.UnavailableFrom > from) &&
                                             (reservation.UnavailableTo < from) &&
                                             (reservation.UnavailableFrom > to) &&
                                             (reservation.UnavailableTo < to) &&
@@ -40,7 +45,7 @@ namespace CarRental
 
         public DateTime LastReservationEnds()
         {
-            return ReservedCars.Max(reservation => reservation.UnavailableTo);
+            return _reservedCars.Max(reservation => reservation.UnavailableTo);
         }
     }
 }

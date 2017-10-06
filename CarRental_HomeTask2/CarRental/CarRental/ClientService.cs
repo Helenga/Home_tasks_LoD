@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CarRental
 {
-    class ClientService : Service, IClientFunctions
+    public class ClientService : Service, IClientFunctions
     {
         public IEnumerable<Car> GetAllAvailableCars(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {

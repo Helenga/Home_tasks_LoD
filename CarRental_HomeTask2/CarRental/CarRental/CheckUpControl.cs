@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarRental
 {
-    class CheckUpControl
+    public class CheckUpControl
     {
         public CheckUpControl(int carID)
         {
