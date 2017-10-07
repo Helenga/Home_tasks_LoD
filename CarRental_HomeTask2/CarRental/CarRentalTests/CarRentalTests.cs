@@ -173,7 +173,5 @@ namespace CarRentalTests
             client2.CreateFindCarsQuery(new DateTime(2018, 10, 1), new DateTime(2018, 10, 5));
             client2.CreateReserveCarQuery(1);
         }
-
-
     }
 }
