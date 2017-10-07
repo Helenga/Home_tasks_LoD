@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Exceptions;
+using Newtonsoft.Json;
 
 namespace CarRental
 {
     public class CarsDB
     {
+        [JsonProperty]
         private static List<Car> _allCars; // одинаковый для любого экземпляра сервиса
 
         static CarsDB()

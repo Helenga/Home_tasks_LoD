@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace CarRental
 {
@@ -9,7 +10,7 @@ namespace CarRental
         {
             service = new AdministratorService();
         }
-
+        [JsonProperty]
         IAdministratorFunctions service;
 
         public void CreateAddCarQuery(int id, string model, string color)

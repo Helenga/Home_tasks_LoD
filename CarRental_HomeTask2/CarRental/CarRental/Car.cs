@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
 namespace CarRental
 {
     public class Car
@@ -15,12 +17,17 @@ namespace CarRental
         {
             _checkUpControl.SendToCheckUpOnTime();
         }
+
+        [JsonProperty]
         [Required]
         public string Model { get; }
+        [JsonProperty]
         [Required]
         public string Color { get; }
+        [JsonProperty]
         [Required]
         public int ID { get; } // уникальный идентификатор авто
+        [JsonProperty]
         private CheckUpControl _checkUpControl;
     }
 }

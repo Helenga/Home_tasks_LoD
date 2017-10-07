@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
 namespace CarRental
 {
     public class Client
@@ -11,6 +13,7 @@ namespace CarRental
             service = new ClientService();
         }
 
+        [JsonProperty]
         IClientFunctions service;
 
         public IEnumerable<Car> CreateFindCarsQuery(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
@@ -25,11 +28,14 @@ namespace CarRental
             service.ReserveChoosenCar(_fio, carID, _firstDayOfReservation, _lastDayOfReservation);
         }
 
+        [JsonProperty]
         [Required]
         private string _fio;
 
         //organize cash for next query
+        [JsonProperty]
         private DateTime _firstDayOfReservation;
+        [JsonProperty]
         private DateTime _lastDayOfReservation;
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace CarRental
 {
     public class ReservationsDB
     {
+        [JsonProperty]
         private static List<Reservation> _reservedCars; // одинаковый для любого экземпляра сервиса
 
         static ReservationsDB()

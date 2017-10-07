@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarRentalTests.cs" />
+    <Compile Include="JsonSerializerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +64,10 @@
     <ProjectReference Include="..\Exceptions\Exceptions.csproj">
       <Project>{1e107d61-3999-4947-9c65-926bb571e099}</Project>
       <Name>Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JSONSerializer\JSONSerializer.csproj">
+      <Project>{9977f0fa-aa79-4eba-b0aa-f7a1ef94b260}</Project>
+      <Name>JSONSerializer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

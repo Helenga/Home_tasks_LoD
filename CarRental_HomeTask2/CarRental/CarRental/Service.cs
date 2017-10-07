@@ -1,4 +1,6 @@
-﻿namespace CarRental
+﻿using Newtonsoft.Json;
+
+namespace CarRental
 {
     public class Service
     {
@@ -8,8 +10,11 @@
             _carsDB = new CarsDB();
             maxNumberOfDaysReservation = 60;
         }
+        [JsonProperty]
         protected ReservationsDB _reservationsDB;
+        [JsonProperty]
         protected CarsDB _carsDB;
+        [JsonProperty]
         protected byte maxNumberOfDaysReservation;
     }   
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace CarRental
 {
@@ -27,7 +23,9 @@ namespace CarRental
             }
         }
 
+        [JsonProperty]
         private byte _rentsLastBeforeCheckingUp;
+        [JsonProperty]
         private int _carID;
     }
 }
