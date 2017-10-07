@@ -21,7 +21,7 @@ namespace CarRental
             {
                 // запросить последнюю дату проката, добавить резервацию тех. обслуживания на 7 дней
                 ReservationsDB reservationsDB = new ReservationsDB();
-                var lastReservation = reservationsDB.LastReservationEnds();
+                var lastReservation = reservationsDB.LastReservationEnds(_carID);
                 reservationsDB.AddReservation("Technical inspection", _carID, lastReservation.AddDays(1), lastReservation.AddDays(8));
                 _rentsLastBeforeCheckingUp = 10;
             }

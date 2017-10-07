@@ -37,7 +37,7 @@ namespace CarRental
             ReservationsDB reservationsDB = new ReservationsDB();
             foreach (Car car in _allCars)
             {
-                if (reservationsDB.IsFreeToRentIn(firstDay, lastDay))
+                if (reservationsDB.IsFreeToRentIn(car.ID, firstDay, lastDay))
                 {
                     AvailableCars.Add(car);
                 }

@@ -22,7 +22,7 @@ namespace CarRental
         {
             if (!_reservationsDB.DoesClientHaveReservation(clientName))
             {
-                if (_reservationsDB.IsFreeToRentIn(from, to))
+                if (_reservationsDB.IsFreeToRentIn(carID, from, to))
                 {
                     _reservationsDB.AddReservation(clientName, carID, from, to);
                     _carsDB.RefreshCarStatus(carID);

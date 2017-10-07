@@ -20,13 +20,13 @@ namespace CarRental
             return service.GetAllAvailableCars(_firstDayOfReservation, _lastDayOfReservation);
         }
 
-        public void CreateReserveCarQuery(Car car)
+        public void CreateReserveCarQuery(int carID)
         {
-            service.ReserveChoosenCar(this.FIO, car.ID, _firstDayOfReservation, _lastDayOfReservation);
+            service.ReserveChoosenCar(this.FIO, carID, _firstDayOfReservation, _lastDayOfReservation);
         }
 
         [Required]
-        [StringLength(50, ErrorMessageResourceType = typeof(ArgumentException), MinimumLength = 5)]
+        [StringLength(50, MinimumLength = 5)]
         public string FIO { get; private set; }
 
         //organize cash for next query

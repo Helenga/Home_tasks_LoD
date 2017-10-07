@@ -15,8 +15,9 @@ namespace CarRental
 
         public void AddReservation(string clientName, int carID, DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {
+            ReservationExpirationControl();
             Reservation reservation = new Reservation(clientName, carID, firstDayOfReservation, lastDayOfReservation);
-            _reservedCars.Add(reservation); 
+            _reservedCars.Add(reservation);
         }
 
         public bool DoesClientHaveReservation(string clientName)
@@ -25,27 +26,32 @@ namespace CarRental
         }
 
         // automatically deletes expired reservations
-        private void ReservationExpirationControl(Car car)
+        private void ReservationExpirationControl()
         {
-            _reservedCars.RemoveAll(reservation => reservation.UnavailableTo == DateTime.Now);
+            _reservedCars.RemoveAll(reservation => reservation.UnavailableTo <= DateTime.Now);
         }
 
-        public bool IsFreeToRentIn(DateTime from, DateTime to)
+        public bool IsFreeToRentIn(int carID, DateTime from, DateTime to)
         {
             // ни одна из точек не лежит в границах существующей резервации
-            return _reservedCars.All(reservation => (reservation.UnavailableFrom > from) &&
+            return SelectReservationsForCarWithID(carID).
+                       All(reservation => (reservation.UnavailableFrom > from) &&
+                                            (reservation.UnavailableFrom > to) ||
                                             (reservation.UnavailableTo < from) &&
-                                            (reservation.UnavailableFrom > to) &&
-                                            (reservation.UnavailableTo < to) &&
-                                            !(
-                                              (reservation.UnavailableFrom >= from) &&
-                                              (reservation.UnavailableTo <= to)
-                                            ));
+                                            (reservation.UnavailableTo < to));
         }
 
-        public DateTime LastReservationEnds()
+        private List<Reservation> SelectReservationsForCarWithID(int carID)
         {
-            return _reservedCars.Max(reservation => reservation.UnavailableTo);
+            List<Reservation> reservationsForCarWithID = _reservedCars.FindAll(car => car.CarID == carID);
+            return reservationsForCarWithID;
+        }
+
+        public DateTime LastReservationEnds(int carID)
+        {
+            return SelectReservationsForCarWithID(carID).
+                           Max(reservation => reservation.UnavailableTo);
+            
         }
     }
 }
