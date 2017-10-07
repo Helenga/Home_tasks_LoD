@@ -7,7 +7,7 @@ namespace CarRental
     {
         public Client(string fio)
         {
-            FIO = fio;
+            _fio = fio;
             service = new ClientService();
         }
 
@@ -22,12 +22,11 @@ namespace CarRental
 
         public void CreateReserveCarQuery(int carID)
         {
-            service.ReserveChoosenCar(this.FIO, carID, _firstDayOfReservation, _lastDayOfReservation);
+            service.ReserveChoosenCar(_fio, carID, _firstDayOfReservation, _lastDayOfReservation);
         }
 
         [Required]
-        [StringLength(50, MinimumLength = 5)]
-        public string FIO { get; private set; }
+        private string _fio;
 
         //organize cash for next query
         private DateTime _firstDayOfReservation;

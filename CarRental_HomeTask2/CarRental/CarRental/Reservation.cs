@@ -4,7 +4,8 @@ namespace CarRental
 {
     public class Reservation
     {
-        public Reservation(string renter, int carID, DateTime unavailableFrom, DateTime unavailableTo)
+        public Reservation(string renter, int carID, 
+                           DateTime unavailableFrom, DateTime unavailableTo)
         {
             Renter = renter;
             CarID = carID;

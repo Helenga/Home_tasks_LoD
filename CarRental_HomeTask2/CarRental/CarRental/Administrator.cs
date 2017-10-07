@@ -9,6 +9,7 @@ namespace CarRental
         {
             service = new AdministratorService();
         }
+
         IAdministratorFunctions service;
 
         public void CreateAddCarQuery(int id, string model, string color)

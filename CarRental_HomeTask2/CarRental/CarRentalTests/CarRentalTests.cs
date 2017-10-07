@@ -4,7 +4,6 @@ using CarRental;
 using System.Collections.Generic;
 using System.Linq;
 using Exceptions;
-using System.ComponentModel.DataAnnotations;
 
 namespace CarRentalTests
 {
@@ -13,7 +12,7 @@ namespace CarRentalTests
     {
         // Test CarsDB
         [TestMethod]
-        public void WhenAddingNewCarInCarsDB_ReturnListOfCarsShouldReturnThisCar()
+        public void WhenAddingNewCarInCarsDB_ReturnListOfCars_ShouldReturnThisCar()
         {
             CarsDB carsDB = new CarsDB();
             carsDB.AddNewCar(22, "Renault", "Red");
@@ -23,21 +22,13 @@ namespace CarRentalTests
 
         [TestMethod]
         [ExpectedException(typeof(CarIDAleradyExists))]
-        public void WhenAddingCarsWithTheSameIDInDifferentCopiesOfCarsDB_ReturnListOfCarsShouldThrowException()
+        public void WhenAddingCarsWithTheSameIDInDifferentCopiesOfCarsDB_ReturnListOfCars_ShouldThrowException()
         {
             CarsDB carsDB1 = new CarsDB();
             CarsDB carsDB2 = new CarsDB();
             Car car = new Car(22, "Volvo", "black");
             carsDB1.AddNewCar(22, "Renault", "Red");
             carsDB2.AddNewCar(22, "Volvo", "black");
-        }
-
-        // Test ClientFunctions
-        [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void PassingTooShortFIOToClient_ShouldRaiseValidationException()
-        {
-            Client client = new Client("");
         }
 
         [TestMethod]
@@ -70,11 +61,11 @@ namespace CarRentalTests
         }
 
         [TestMethod]
-        public void PassingDatesCoincidedWhithExistedReservationToIsFreeToRentIn_ShouldReturnFalse()
+        public void PassingDatesCoincidedWhithExistedReservation_GetAllAvailableCars_ShouldNotReturnCar()
         {
             Administrator admin = new Administrator();
             admin.CreateAddCarQuery(2, "Volvo", "black");
-            Client client = new Client("Jonny Stroke");
+            Client client = new Client("client");
             ReservationsDB reservationDB = new ReservationsDB();
             reservationDB.AddReservation("some client", 2,
                         new DateTime(2017, 10, 8), new DateTime(2017, 11, 1));
@@ -153,7 +144,7 @@ namespace CarRentalTests
             Client client = new Client("client");
             client.CreateFindCarsQuery(new DateTime(2018, 9, 10), new DateTime(2019, 9, 9));
         }
-        // проверка выброса ошибки, если клиент уже имеет резервацию
+        
         [TestMethod]
         [ExpectedException(typeof(TheClientAlreadyHasReservation))]
         public void IfClientTriesToReserveMoreThanOneCar_ReserveChoosenCar_ShouldThrowException()

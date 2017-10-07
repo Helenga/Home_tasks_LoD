@@ -13,10 +13,12 @@ namespace CarRental
             _reservedCars = new List<Reservation>();
         }
 
-        public void AddReservation(string clientName, int carID, DateTime firstDayOfReservation, DateTime lastDayOfReservation)
+        public void AddReservation(string clientName, int carID, 
+                                   DateTime firstDayOfReservation, DateTime lastDayOfReservation)
         {
             ReservationExpirationControl();
-            Reservation reservation = new Reservation(clientName, carID, firstDayOfReservation, lastDayOfReservation);
+            Reservation reservation = new Reservation(clientName, 
+                                      carID, firstDayOfReservation, lastDayOfReservation);
             _reservedCars.Add(reservation);
         }
 
@@ -43,7 +45,8 @@ namespace CarRental
 
         private List<Reservation> SelectReservationsForCarWithID(int carID)
         {
-            List<Reservation> reservationsForCarWithID = _reservedCars.FindAll(car => car.CarID == carID);
+            List<Reservation> reservationsForCarWithID = _reservedCars.
+                                                     FindAll(car => car.CarID == carID);
             return reservationsForCarWithID;
         }
 

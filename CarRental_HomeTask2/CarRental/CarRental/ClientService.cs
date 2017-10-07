@@ -6,7 +6,8 @@ namespace CarRental
 {
     public class ClientService : Service, IClientFunctions
     {
-        public IEnumerable<Car> GetAllAvailableCars(DateTime firstDayOfReservation, DateTime lastDayOfReservation)
+        public IEnumerable<Car> GetAllAvailableCars(DateTime firstDayOfReservation, 
+                                                    DateTime lastDayOfReservation)
         {
             if (IsNumberOfDaysLessThanMaximumTerm(firstDayOfReservation, lastDayOfReservation))
             {
