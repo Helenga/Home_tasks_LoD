@@ -35,5 +35,25 @@ namespace CarRentalTests
             serializer.SaveToFile(client);
             Assert.IsTrue(File.Exists(path));
         }
+
+        [TestMethod]
+        public void PassingPath_ReadFromFile_ShouldReturnObject()
+        {
+            string path = @"C:\Users\user\Desktop\savedAdministrator.json";
+            Serializer serializer = new Serializer(path);
+            Administrator admin = new Administrator();
+            Object loadedAdmin = serializer.ReadFromFile();
+            Assert.IsNotNull(loadedAdmin);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void PassingWrongPath_ReadFromFile_ShouldThrowException()
+        {
+            string path = @"C:\Users\user\savedAdministrator.json";
+            Serializer serializer = new Serializer(path);
+            Administrator admin = new Administrator();
+            Object loadedAdmin = serializer.ReadFromFile();
+        }
     }
 }
