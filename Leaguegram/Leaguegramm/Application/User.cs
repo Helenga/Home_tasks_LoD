@@ -64,7 +64,7 @@ namespace Leaguegramm.Application
 
         public void ChooseDialogue()
         {
-            _dialogues.
+            
         }
 
         public void GetMessages()
