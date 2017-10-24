@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{176B6D53-B00C-446B-8D55-8EF638634FEF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Leaguegramm</RootNamespace>
+    <AssemblyName>Leaguegramm</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\Interfaces\IAdmin.cs" />
+    <Compile Include="Application\Interfaces\IAuthor.cs" />
+    <Compile Include="Application\Interfaces\IUser.cs" />
+    <Compile Include="Application\User.cs" />
+    <Compile Include="Domain\Channel.cs" />
+    <Compile Include="Domain\Chat.cs" />
+    <Compile Include="Domain\Dialogue.cs" />
+    <Compile Include="Domain\Group.cs" />
+    <Compile Include="Domain\Interfaces\IChannel.cs" />
+    <Compile Include="Domain\Interfaces\IChat.cs" />
+    <Compile Include="Domain\Interfaces\IDialogue.cs" />
+    <Compile Include="Domain\Interfaces\IGroup.cs" />
+    <Compile Include="Domain\Interfaces\IMessage.cs" />
+    <Compile Include="Domain\Interfaces\IMultipleChat.cs" />
+    <Compile Include="Infrastructure\Repositories\ChannelsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\UsersRepository.cs" />
+    <Compile Include="Operation\Message.cs" />
+    <Compile Include="Domain\MultipleChat.cs" />
+    <Compile Include="Infrastructure\IdProvider.cs" />
+    <Compile Include="Infrastructure\RepositoryProvider.cs" />
+    <Compile Include="Operation\Status.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
