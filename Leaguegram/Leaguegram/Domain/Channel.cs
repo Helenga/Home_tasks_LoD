@@ -8,9 +8,9 @@ namespace Leaguegram.Domain
 {
     internal class Channel : MultipleChat
     {
-        public Channel(string title) : base(title)
+        public Channel(Guid CreatorId, string title) : base(CreatorId, title)
         {
-            Title = title;
+
         }
     }
 }

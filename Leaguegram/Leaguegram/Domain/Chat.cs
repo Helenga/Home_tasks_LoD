@@ -53,6 +53,11 @@ namespace Leaguegram.Domain
             throw new Exception("Message doesn't exist");
         }
 
+        protected void AddParticipant(Guid id, Status status = Status.user)
+        {
+            _participants.Add(id, status);
+        }
+
         protected Guid _id;
         protected Dictionary<Guid, Status> _participants;
         protected List<Message> _messagesRepository;

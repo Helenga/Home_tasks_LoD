@@ -29,12 +29,12 @@ namespace Leaguegram.Application
 
         public void CreateGroup(string title)
         {
-            _group = new Group(title);
+            _group = new Group(_account.Id, title);
         }
 
         public void CreateChannel(string title)
         {
-            _channel = new Channel(title);
+            _channel = new Channel(_account.Id, title);
         }
 
         public List<string> GetDialogues()

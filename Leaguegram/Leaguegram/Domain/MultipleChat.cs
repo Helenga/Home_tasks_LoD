@@ -10,10 +10,11 @@ namespace Leaguegram.Domain
 {
     internal class MultipleChat : Chat
     {
-        public MultipleChat(string title) : base()
+        public MultipleChat(Guid creatorId, string title) : base()
         {
             _participants = new Dictionary<Guid, Status>();
             Title = title;
+            AddParticipant(creatorId, Status.author);
         }
 
         public string Title { get; protected set; }

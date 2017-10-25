@@ -13,6 +13,8 @@ namespace Leaguegram.Domain
         public Dialogue() : base()
         {
             _participants = new Dictionary<Guid, Status>(2);
+            AddParticipant();
+            AddParticipant();
         }
     }
 }
