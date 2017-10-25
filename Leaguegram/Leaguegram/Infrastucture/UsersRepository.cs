@@ -8,7 +8,7 @@ using Leaguegram.Domain;
 
 namespace Leaguegram.Infrastucture
 {
-    public class UsersRepository
+    internal class UsersRepository
     {
         private List<Account> _accounts;
 

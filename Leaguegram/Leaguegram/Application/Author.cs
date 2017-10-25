@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Leaguegram.Application
 {
-    class Author : Admin, IAuthor
+    internal class Author : Admin, IAuthor
     {
         public void AuthorizeUser(Guid userId)
         {

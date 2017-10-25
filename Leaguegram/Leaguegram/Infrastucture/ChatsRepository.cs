@@ -10,7 +10,7 @@ using Leaguegram.Common;
 
 namespace Leaguegram.Infrastucture
 {
-    class ChatsRepository
+    internal class ChatsRepository
     {
         private ArrayList _chats;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Leaguegram.Domain
 {
-    class Group : MultipleChat
+    internal class Group : MultipleChat
     {
         public Group(string title) : base(title)
         {

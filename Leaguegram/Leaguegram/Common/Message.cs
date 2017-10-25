@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Leaguegram.Common
 {
-    class Message
+    internal class Message
     {
         public Message(string text, Guid sender)
         {

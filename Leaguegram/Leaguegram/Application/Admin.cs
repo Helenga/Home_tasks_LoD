@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Leaguegram.Application
 {
-    class Admin : User, IAdmin
+    internal class Admin : User, IAdmin
     {
         public void DeleteUser(string username)
         {

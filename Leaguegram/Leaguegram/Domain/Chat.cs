@@ -9,7 +9,7 @@ using Leaguegram.Infrastucture;
 
 namespace Leaguegram.Domain
 {
-    class Chat
+    internal class Chat
     {
         public Chat()
         {

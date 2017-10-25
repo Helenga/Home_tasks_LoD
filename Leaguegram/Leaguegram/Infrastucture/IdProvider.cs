@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Leaguegram.Infrastucture
 {
-    class IdProvider
+    internal class IdProvider
     {
         public static Guid GetId()
         {

@@ -8,7 +8,7 @@ using Leaguegram.Common;
 
 namespace Leaguegram.Domain
 {
-    class Dialogue : Chat
+    internal class Dialogue : Chat
     {
         public Dialogue() : base()
         {

@@ -11,13 +11,13 @@ using Leaguegram.Common;
 
 namespace Leaguegram.Domain
 {
-    public class Account
+    internal class Account
     {
         public Account(string username, string password)
         {
             Username = username;
             _password = password;
-            _id = IdProvider.GetId();
+            Id = IdProvider.GetId();
             _dialogues = new Dictionary<Guid, string>();
         }
 
@@ -32,15 +32,6 @@ namespace Leaguegram.Domain
         {
             
         }
-
-        /*
-        public IEnumerable<Message> ShowMessages(string nameOfDialogue)
-        {
-            Guid id = GetIdOfDialogue(nameOfDialogue);
-            return _chatsRepository.SelectMessagesFromDialogue(id);
-        }*/
-
-
 
         public Guid GetIdOfDialogue(string nameOfDialogue)
         {
