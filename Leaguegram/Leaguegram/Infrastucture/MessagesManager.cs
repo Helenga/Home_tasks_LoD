@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leaguegramm.Domain.Interfaces
+namespace Leaguegram.Infrastucture
 {
-    interface IMessage
+    class MessagesManager
     {
     }
 }

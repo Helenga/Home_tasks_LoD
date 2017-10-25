@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leaguegramm.Application.Interfaces
+namespace Leaguegram.Application
 {
     interface IAuthor : IAdmin
     {
-        void AuthorizeUser();
-        void DemoteUser();
+        void AuthorizeUser(Guid userId);
+        void DemoteUser(Guid userId);
     }
 }

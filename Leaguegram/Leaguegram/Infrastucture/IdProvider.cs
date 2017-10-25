@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leaguegramm.Infrastructure
+namespace Leaguegram.Infrastucture
 {
     class IdProvider
     {
-        public Guid GetId()
+        public static Guid GetId()
         {
             Guid id = new Guid();
             return id;

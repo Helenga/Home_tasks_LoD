@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{176B6D53-B00C-446B-8D55-8EF638634FEF}</ProjectGuid>
+    <ProjectGuid>{76BCDCC3-6472-4A01-8B59-21AC28307B1A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Leaguegramm</RootNamespace>
-    <AssemblyName>Leaguegramm</AssemblyName>
+    <RootNamespace>Leaguegram</RootNamespace>
+    <AssemblyName>Leaguegram</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,29 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Interfaces\IAdmin.cs" />
-    <Compile Include="Application\Interfaces\IAuthor.cs" />
-    <Compile Include="Application\Interfaces\IUser.cs" />
-    <Compile Include="Application\User.cs" />
-    <Compile Include="Domain\Channel.cs" />
+    <Compile Include="Common\Message.cs" />
     <Compile Include="Domain\Chat.cs" />
+    <Compile Include="Domain\CommunityService.cs" />
     <Compile Include="Domain\Dialogue.cs" />
-    <Compile Include="Domain\Group.cs" />
-    <Compile Include="Domain\Interfaces\IChannel.cs" />
-    <Compile Include="Domain\Interfaces\IChat.cs" />
-    <Compile Include="Domain\Interfaces\IDialogue.cs" />
-    <Compile Include="Domain\Interfaces\IGroup.cs" />
-    <Compile Include="Domain\Interfaces\IMessage.cs" />
-    <Compile Include="Domain\Interfaces\IMultipleChat.cs" />
-    <Compile Include="Infrastructure\Repositories\ChannelsRepository.cs" />
-    <Compile Include="Infrastructure\Repositories\UsersRepository.cs" />
-    <Compile Include="Operation\Message.cs" />
     <Compile Include="Domain\MultipleChat.cs" />
-    <Compile Include="Infrastructure\IdProvider.cs" />
-    <Compile Include="Infrastructure\RepositoryProvider.cs" />
-    <Compile Include="Operation\Status.cs" />
+    <Compile Include="Infrastucture\ChatsRepository.cs" />
+    <Compile Include="Infrastucture\IdProvider.cs" />
+    <Compile Include="Infrastucture\MessagesManager.cs" />
+    <Compile Include="Infrastucture\MessagesSender.cs" />
+    <Compile Include="Infrastucture\UsersRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Application\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

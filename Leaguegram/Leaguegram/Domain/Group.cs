@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leaguegramm.Domain
+namespace Leaguegram.Domain
 {
     class Group : MultipleChat
     {
+        public Group(string title) : base(title)
+        {
+            Title = title;
+        }
     }
 }

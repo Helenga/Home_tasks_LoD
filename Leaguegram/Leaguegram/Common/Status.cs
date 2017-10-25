@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leaguegramm.Operation
+namespace Leaguegram.Common
 {
-    public enum Status
+    enum Status
     {
-        author,
         user,
-        admin
+        author,
+        administrator
     }
 }

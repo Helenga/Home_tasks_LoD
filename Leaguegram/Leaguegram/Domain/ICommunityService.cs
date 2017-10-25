@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leaguegramm.Domain.Interfaces
+namespace Leaguegram.Domain
 {
-    interface IGroup
+    interface ICommunityService
     {
     }
 }
