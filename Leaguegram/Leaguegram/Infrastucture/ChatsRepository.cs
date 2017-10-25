@@ -37,7 +37,6 @@ namespace Leaguegram.Infrastucture
         {
             var chat = FindChatById(id);
             return chat.GetMessages();
-
         }
 
         public void AddMessageToChat(Guid id, Message message)
@@ -52,10 +51,20 @@ namespace Leaguegram.Infrastucture
             chat.EditMessage(messageId, newText);
         }
 
-        public void DeleteMessage(Guid chatId, Guid messageId)
+        public void DeleteMessageFromChat(Guid chatId, Guid messageId)
         {
             var chat = FindChatById(chatId);
             chat.DeleteMessage(messageId);
+        }
+
+        public void AddUserToChat(Guid chatId, Guid userId)
+        {
+            FindChatById(chatId).AddParticipant(userId);
+        }
+
+        public void DeleteUserFromChat(Guid chatId, Guid userId)
+        {
+            FindChatById(chatId).DeleteParticipant(userId);
         }
 
         private Chat FindChatById(Guid id)
@@ -70,6 +79,5 @@ namespace Leaguegram.Infrastucture
             }
             throw new Exception("Dialogue is not found");
         }
-
     }
 }

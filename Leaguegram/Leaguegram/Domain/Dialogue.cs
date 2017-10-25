@@ -10,11 +10,11 @@ namespace Leaguegram.Domain
 {
     internal class Dialogue : Chat
     {
-        public Dialogue() : base()
+        public Dialogue(Guid userId, Guid receiverId) : base()
         {
             _participants = new Dictionary<Guid, Status>(2);
-            AddParticipant();
-            AddParticipant();
+            AddParticipant(userId);
+            AddParticipant(receiverId);
         }
     }
 }

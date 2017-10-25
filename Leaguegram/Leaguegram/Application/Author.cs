@@ -8,14 +8,14 @@ namespace Leaguegram.Application
 {
     internal class Author : Admin, IAuthor
     {
-        public void AuthorizeUser(Guid userId)
+        public void AuthorizeUser(Guid userId, Guid chatId)
         {
-            throw new NotImplementedException();
+            
         }
 
-        public void DemoteUser(Guid userId)
+        public void DemoteUser(Guid userId, Guid chatId)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -19,12 +19,18 @@ namespace Leaguegram.Application
 
         public IEnumerable<Account> FindUser(string stringForSearch)
         {
-            return _usersRepository.FindAccountsByUserName(stringForSearch);
+            return _usersRepository.FindAccountsByStringForSearch(stringForSearch);
         }
 
         public IEnumerable<Channel> FindChannel(string stringForSearch)
         {
             return _chatsRepository.FindChannelsByTitle(stringForSearch);
+        }
+
+        public void CreateDialogue(string usernameToSendMessage)
+        {
+            Guid id = ChooseUser(usernameToSendMessage);
+            _dialogue = new Dialogue(_account.Id, id);
         }
 
         public void CreateGroup(string title)
@@ -63,7 +69,7 @@ namespace Leaguegram.Application
         public void DeleteMessageIn(string nameOfDialogue, Guid messageId)
         {
             Guid id = ChooseDialogue(nameOfDialogue);
-            _chatsRepository.DeleteMessage(id, messageId);
+            _chatsRepository.DeleteMessageFromChat(id, messageId);
         }
 
         public Message CreateMessage(string text)
@@ -72,16 +78,21 @@ namespace Leaguegram.Application
             return message;
         }
 
-        private Guid ChooseDialogue(string nameOfDialogue)
+        protected Guid ChooseDialogue(string nameOfDialogue)
         {
-            return _account.GetIdOfDialogue(nameOfDialogue); ;
+            return _account.GetIdOfDialogue(nameOfDialogue);
         }
 
-        private UsersRepository _usersRepository;
-        private Account _account;
-        private Dialogue _dialogue;
-        private Group _group;
-        private Channel _channel;
-        private ChatsRepository _chatsRepository;
+        protected Guid ChooseUser(string username)
+        {
+            return _usersRepository.FindUserByName(username);
+        }
+
+        protected UsersRepository _usersRepository;
+        protected Account _account;
+        protected Dialogue _dialogue;
+        protected Group _group;
+        protected Channel _channel;
+        protected ChatsRepository _chatsRepository;
     }
 }

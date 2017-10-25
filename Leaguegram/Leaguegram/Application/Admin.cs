@@ -8,14 +8,16 @@ namespace Leaguegram.Application
 {
     internal class Admin : User, IAdmin
     {
-        public void DeleteUser(string username)
+        public void DeleteUser(string username, Guid chatId)
         {
-            throw new NotImplementedException();
+            Guid userId = ChooseUser(username);
+            _chatsRepository.DeleteUserFromChat(chatId, userId);
         }
 
-        public void InviteUser(string username)
+        public void InviteUser(string username, Guid chatId)
         {
-            throw new NotImplementedException();
+            Guid userId = ChooseUser(username);
+            _chatsRepository.AddUserToChat(chatId, userId);
         }
     }
 }

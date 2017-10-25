@@ -17,7 +17,7 @@ namespace Leaguegram.Infrastucture
             _accounts.Add(account);
         }
 
-        public IEnumerable<Account> FindAccountsByUserName(string stringForSearch)
+        public IEnumerable<Account> FindAccountsByStringForSearch(string stringForSearch)
         {
             List<Account> foundAccounts = new List<Account>();
             foreach (Account account in _accounts)
@@ -29,6 +29,16 @@ namespace Leaguegram.Infrastucture
                 return foundAccounts;
             else
                 return null;
+        }
+
+        public Guid FindUserByName(string username)
+        {
+            foreach (var account in _accounts)
+            {
+                if (account.Username.Equals(username))
+                    return account.Id;
+            }
+            throw new Exception("User with such name is not found");
         }
     }
 }

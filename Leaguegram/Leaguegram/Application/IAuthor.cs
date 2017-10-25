@@ -8,7 +8,7 @@ namespace Leaguegram.Application
 {
     interface IAuthor : IAdmin
     {
-        void AuthorizeUser(Guid userId);
-        void DemoteUser(Guid userId);
+        void AuthorizeUser(Guid userId, Guid chatId);
+        void DemoteUser(Guid userId, Guid chatId);
     }
 }
