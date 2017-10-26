@@ -40,20 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Admin.cs" />
+    <Compile Include="Application\Author.cs" />
+    <Compile Include="Application\IAdmin.cs" />
+    <Compile Include="Application\IAuthor.cs" />
+    <Compile Include="Application\IUser.cs" />
+    <Compile Include="Application\User.cs" />
     <Compile Include="Common\Message.cs" />
+    <Compile Include="Common\Status.cs" />
+    <Compile Include="Domain\Account.cs" />
+    <Compile Include="Domain\Channel.cs" />
     <Compile Include="Domain\Chat.cs" />
-    <Compile Include="Domain\CommunityService.cs" />
     <Compile Include="Domain\Dialogue.cs" />
+    <Compile Include="Domain\Group.cs" />
     <Compile Include="Domain\MultipleChat.cs" />
     <Compile Include="Infrastucture\ChatsRepository.cs" />
     <Compile Include="Infrastucture\IdProvider.cs" />
-    <Compile Include="Infrastucture\MessagesManager.cs" />
-    <Compile Include="Infrastucture\MessagesSender.cs" />
     <Compile Include="Infrastucture\UsersRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Application\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

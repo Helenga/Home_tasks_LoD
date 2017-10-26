@@ -10,7 +10,7 @@ using Leaguegram.Common;
 
 namespace Leaguegram.Application
 {
-    internal class User : IUser
+    class User : IUser
     {
         public void CreateAccount(string username, string password)
         {
