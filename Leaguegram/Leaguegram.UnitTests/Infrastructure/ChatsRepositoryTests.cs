@@ -12,7 +12,7 @@ using Leaguegram.Common;
 namespace Leaguegram.UnitTests.Infrastructure
 {
     [TestClass]
-    class UsersRepositoryTests
+    class ChatsRepositoryTests
     {
         [TestMethod]
         public void T()

@@ -31,6 +31,12 @@ namespace Leaguegram.Application
         {
             Guid id = ChooseUser(usernameToSendMessage);
             _dialogue = new Dialogue(_account.Id, id);
+            _account.AddToDialogues(id, usernameToSendMessage);
+        }
+
+        public void SubscribeToChannel(Guid chatId, string title)
+        {
+            _account.AddToDialogues(chatId, title);
         }
 
         public void CreateGroup(string title)

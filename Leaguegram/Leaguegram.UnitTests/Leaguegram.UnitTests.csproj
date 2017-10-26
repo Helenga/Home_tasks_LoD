@@ -48,20 +48,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\AccountTests.cs" />
+    <Compile Include="Domain\ChatTests.cs" />
+    <Compile Include="Infrastructure\ChatsRepositoryTests.cs" />
+    <Compile Include="Infrastructure\UsersRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserTests\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AdminisratorTests\" />
-    <Folder Include="Application\" />
-    <Folder Include="AuthorTests\" />
-    <Folder Include="Common\" />
-    <Folder Include="Domain\" />
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Leaguegram\Leaguegram.csproj">
       <Project>{76bcdcc3-6472-4a01-8b59-21ac28307b1a}</Project>

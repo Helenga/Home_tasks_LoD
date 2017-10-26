@@ -17,7 +17,7 @@ namespace Leaguegram.Domain
         {
             Username = username;
             _password = password;
-            Id = IdProvider.GetId();
+            Id = Guid.NewGuid();
             _dialogues = new Dictionary<Guid, string>();
         }
 
@@ -30,7 +30,7 @@ namespace Leaguegram.Domain
 
         public void AddToDialogues(Guid id, string name)
         {
-            
+            _dialogues.Add(id, name);
         }
 
         public Guid GetIdOfDialogue(string nameOfDialogue)

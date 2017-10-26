@@ -55,7 +55,6 @@
     <Compile Include="Domain\Group.cs" />
     <Compile Include="Domain\MultipleChat.cs" />
     <Compile Include="Infrastucture\ChatsRepository.cs" />
-    <Compile Include="Infrastucture\IdProvider.cs" />
     <Compile Include="Infrastucture\UsersRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
