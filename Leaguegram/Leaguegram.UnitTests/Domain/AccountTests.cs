@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Leaguegram.Domain;
+using Leaguegram.Exceptions;
 
 namespace Leaguegram.UnitTests.Infrastructure
 {
@@ -51,7 +52,7 @@ namespace Leaguegram.UnitTests.Infrastructure
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(DialogueDoesNotExistException))]
         public void GetIdOfDialogue_ShouldThrowException_IfDialogueDoesNotExist()
         {
             Account account = new Account("username", "password");

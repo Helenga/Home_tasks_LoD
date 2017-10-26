@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Leaguegram.Infrastucture;
-using Leaguegram.Domain;
-using Leaguegram.Common;
+using Leaguegram.Exceptions;
 
 namespace Leaguegram.Domain
 {
@@ -40,13 +39,11 @@ namespace Leaguegram.Domain
                 if (record.Value.Equals(nameOfDialogue))
                     return record.Key;
             }
-            throw new ArgumentException("Dialogue doesn't exist");
+            throw new DialogueDoesNotExistException();
         }
 
         private string _password;
         private Dictionary<Guid, string> _dialogues { get; }
         public readonly Guid Id;
-
-        private ChatsRepository _chatsRepository;
     }
 }
