@@ -67,6 +67,22 @@ namespace Leaguegram.Infrastucture
             FindChatById(chatId).DeleteParticipant(userId);
         }
 
+        public void AddUserToChat(Guid requestingUserId, Guid chatId, Guid userId)
+        {
+            FindChatById(chatId).AddParticipant(userId);
+        }
+
+        public void DeleteUserFromChat(Guid requestingUserId, Guid chatId, Guid userId)
+        {
+            FindChatById(chatId).DeleteParticipant(userId);
+        }
+
+        public void ChangeParticipantStatus(Guid requestingUserId, Guid userId, Guid chatId)
+        {
+            MultipleChat chat = FindChatById(chatId) as MultipleChat;
+            chat.ChangeUserStatus(requestingUserId, userId);
+        }
+
         private Chat FindChatById(Guid id)
         {
             foreach (var chat in _chats)

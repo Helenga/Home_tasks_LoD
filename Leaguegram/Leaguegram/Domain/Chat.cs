@@ -43,21 +43,6 @@ namespace Leaguegram.Domain
             _messagesRepository.Remove(FindMessageById(id));
         }
 
-        public bool IsUserAuthorized(Guid userId)
-        {
-
-        }
-
-        private Message FindMessageById(Guid id)
-        {
-            foreach (Message message in _messagesRepository)
-            {
-                if (message.Id.Equals(id))
-                    return message;
-            }
-            throw new Exception("Message doesn't exist");
-        }
-
         public void AddParticipant(Guid id, Status status = Status.user)
         {
             _participants.Add(id, status);
@@ -66,6 +51,16 @@ namespace Leaguegram.Domain
         public void DeleteParticipant(Guid id)
         {
             _participants.Remove(id);
+        }
+
+        protected Message FindMessageById(Guid id)
+        {
+            foreach (Message message in _messagesRepository)
+            {
+                if (message.Id.Equals(id))
+                    return message;
+            }
+            throw new Exception("Message doesn't exist");
         }
 
         protected Guid _id;

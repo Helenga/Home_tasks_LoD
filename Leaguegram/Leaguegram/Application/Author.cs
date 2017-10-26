@@ -8,14 +8,9 @@ namespace Leaguegram.Application
 {
     internal class Author : Admin, IAuthor
     {
-        public void AuthorizeUser(Guid userId, Guid chatId)
+        public void ChangeUserStatus(Guid userId, Guid chatId)
         {
-            
-        }
-
-        public void DemoteUser(Guid userId, Guid chatId)
-        {
-            
+            _chatsRepository.ChangeParticipantStatus(_account.Id, userId, chatId);
         }
     }
 }
