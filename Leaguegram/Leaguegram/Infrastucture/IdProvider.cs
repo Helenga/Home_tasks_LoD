@@ -10,7 +10,8 @@ namespace Leaguegram.Infrastucture
     {
         public static Guid GetId()
         {
-            Guid id = new Guid();
+            
+            Guid id = Guid.NewGuid();
             return id;
         }
     }

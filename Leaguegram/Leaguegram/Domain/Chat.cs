@@ -14,7 +14,7 @@ namespace Leaguegram.Domain
         public Chat()
         {
             _messagesRepository = new List<Message>();
-            _id = new Guid();
+            _id = Guid.NewGuid();
             _chatsRepository.AddNewChatToRepository(this);
         }
 
