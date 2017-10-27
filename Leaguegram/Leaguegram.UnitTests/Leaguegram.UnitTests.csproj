@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Domain\AccountTests.cs" />
     <Compile Include="Domain\ChatTests.cs" />
+    <Compile Include="Domain\MultipleChatTests.cs" />
     <Compile Include="Infrastructure\ChatsRepositoryTests.cs" />
     <Compile Include="Infrastructure\UsersRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Leaguegram.Domain;
+using Leaguegram.Exceptions;
 
 namespace Leaguegram.Infrastucture
 {
     internal class UsersRepository
     {
-        private List<Account> _accounts;
-
-        void AddToRepository(Account account)
+        static UsersRepository()
         {
-            _accounts.Add(account);
+            _accounts = new List<Account>();
         }
 
         public IEnumerable<Account> FindAccountsByStringForSearch(string stringForSearch)
@@ -31,14 +27,21 @@ namespace Leaguegram.Infrastucture
                 return null;
         }
 
-        public Guid FindUserByName(string username)
+        public Guid FindUserIdByName(string username)
         {
             foreach (var account in _accounts)
             {
                 if (account.Username.Equals(username))
                     return account.Id;
             }
-            throw new Exception("User with such name is not found");
+            throw new UserIsNotFoundException();
         }
+
+        public void AddToRepository(Account account)
+        {
+            _accounts.Add(account);
+        }
+
+        private static List<Account> _accounts;
     }
 }

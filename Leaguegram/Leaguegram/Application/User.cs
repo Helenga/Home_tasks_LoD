@@ -105,7 +105,7 @@ namespace Leaguegram.Application
 
         protected Guid ChooseUser(string username)
         {
-            return _usersRepository.FindUserByName(username);
+            return _usersRepository.FindUserIdByName(username);
         }
 
         protected UsersRepository _usersRepository;

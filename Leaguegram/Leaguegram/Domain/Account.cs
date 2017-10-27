@@ -18,6 +18,8 @@ namespace Leaguegram.Domain
             _password = password;
             Id = Guid.NewGuid();
             _dialogues = new Dictionary<Guid, string>();
+            _usersRepository = new UsersRepository();
+            _usersRepository.AddToRepository(this);
         }
 
         public string Username { get; private set; }
@@ -45,5 +47,7 @@ namespace Leaguegram.Domain
         private string _password;
         private Dictionary<Guid, string> _dialogues { get; }
         public readonly Guid Id;
+
+        private UsersRepository _usersRepository;
     }
 }
