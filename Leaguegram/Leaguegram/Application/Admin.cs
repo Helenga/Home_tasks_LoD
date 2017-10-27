@@ -1,13 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Leaguegram.Infrastucture;
+using Leaguegram.Domain;
 
 namespace Leaguegram.Application
 {
-    internal class Admin : User, IAdmin
+    class Admin : User, IAdmin
     {
+        public Admin(
+            UsersRepository usersRepository,
+            Account account,
+            Dialogue dialogue,
+            Group group,
+            Channel channel,
+            ChatsRepository chatsRepository) : base(
+                usersRepository,
+                account,
+                dialogue,
+                group,
+                channel,
+                chatsRepository)
+        { }
+
         public void DeleteUser(string username, Guid chatId)
         {
             Guid userId = ChooseUser(username);

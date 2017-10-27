@@ -54,6 +54,14 @@
     <Compile Include="Domain\Dialogue.cs" />
     <Compile Include="Domain\Group.cs" />
     <Compile Include="Domain\MultipleChat.cs" />
+    <Compile Include="Exceptions\AuthorCanNotBeDeletedException.cs" />
+    <Compile Include="Exceptions\DialogueDoesNotExistException.cs" />
+    <Compile Include="Exceptions\DialogueIsNotFoundException.cs" />
+    <Compile Include="Exceptions\LeaguegramException.cs" />
+    <Compile Include="Exceptions\MessageDoesNotExistException.cs" />
+    <Compile Include="Exceptions\ParticipantAlreadyExistException.cs" />
+    <Compile Include="Exceptions\UserIsNotAuthorizedException.cs" />
+    <Compile Include="Exceptions\UserIsNotFoundException.cs" />
     <Compile Include="Infrastucture\ChatsRepository.cs" />
     <Compile Include="Infrastucture\UsersRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

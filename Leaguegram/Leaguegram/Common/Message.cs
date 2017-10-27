@@ -10,6 +10,7 @@ namespace Leaguegram.Common
     {
         public Message(string text, Guid sender)
         {
+            Id = Guid.NewGuid();
             Body = text;
             PostDate = DateTime.Now;
             SenderId = sender;

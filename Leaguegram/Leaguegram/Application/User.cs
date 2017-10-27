@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Leaguegram.Infrastucture;
 using Leaguegram.Domain;
@@ -12,6 +9,23 @@ namespace Leaguegram.Application
 {
     class User : IUser
     {
+        public User (
+            UsersRepository usersRepository,
+            Account account,
+            Dialogue dialogue,
+            Group group,
+            Channel channel,
+            ChatsRepository chatsRepository) 
+        {
+            _usersRepository = usersRepository;
+            _account = account;
+            _dialogue = dialogue;
+            _group = group;
+            _channel = channel;
+            _chatsRepository = chatsRepository;
+        }  
+        
+
         public void CreateAccount(string username, string password)
         {
             _account = new Account(username, password);

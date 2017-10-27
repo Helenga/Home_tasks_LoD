@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Leaguegram.Domain;
 using Leaguegram.Common;
+using Leaguegram.Exceptions;
 
 namespace Leaguegram.Infrastucture
 {
     internal class ChatsRepository
     {
-        private ArrayList _chats;
-
-        public void AddNewChatToRepository<T>(T chat)
+        static ChatsRepository()
         {
-            _chats.Add(chat);
+            _chats = new ArrayList();
         }
 
         public IEnumerable<Channel> FindChannelsByTitle(string stringforSearch)
@@ -67,21 +64,30 @@ namespace Leaguegram.Infrastucture
             FindChatById(chatId).DeleteParticipant(userId);
         }
 
+        // overloaded methods for authorized users queries
         public void AddUserToChat(Guid requestingUserId, Guid chatId, Guid userId)
         {
-            FindChatById(chatId).AddParticipant(userId);
+            (FindChatById(chatId) as MultipleChat).AddParticipant(requestingUserId, userId);
         }
 
         public void DeleteUserFromChat(Guid requestingUserId, Guid chatId, Guid userId)
         {
-            FindChatById(chatId).DeleteParticipant(userId);
+            (FindChatById(chatId) as MultipleChat).DeleteParticipant(requestingUserId, userId);
         }
+        // end
 
         public void ChangeParticipantStatus(Guid requestingUserId, Guid userId, Guid chatId)
         {
             MultipleChat chat = FindChatById(chatId) as MultipleChat;
             chat.ChangeUserStatus(requestingUserId, userId);
         }
+
+        public void AddNewChatToRepository<T>(T chat)
+        {
+            _chats.Add(chat);
+        }
+
+        private static ArrayList _chats;
 
         private Chat FindChatById(Guid id)
         {
@@ -93,7 +99,7 @@ namespace Leaguegram.Infrastucture
                     return chatObj;
                 }
             }
-            throw new Exception("Dialogue is not found");
+            throw new DialogueIsNotFoundException();
         }
     }
 }

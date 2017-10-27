@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Leaguegram.Common;
+using Leaguegram.Exceptions;
 
 namespace Leaguegram.Domain
 {
@@ -28,23 +26,26 @@ namespace Leaguegram.Domain
                     _participants[userId] = Status.user;
             }
             else
-                throw new Exception("User isn't authorized");
+                throw new UserIsNotAuthorizedException();
         }
 
         public void AddParticipant(Guid requestingUserId, Guid id, Status status = Status.user)
         {
             if (IsUserAdministrator(requestingUserId) || IsUserAuthor(requestingUserId))
-                _participants.Add(id, status);
+                AddParticipant(id, status);
             else
-                throw new Exception("User isn't authorized");
+                throw new UserIsNotAuthorizedException();
         }
 
         public void DeleteParticipant(Guid requestingUserId, Guid id)
         {
             if (IsUserAdministrator(requestingUserId) || IsUserAuthor(requestingUserId))
-                _participants.Remove(id);
+                if (!IsUserAuthor(id))
+                    DeleteParticipant(id);
+                else
+                    throw new AuthorCanNotBeDeletedException();
             else
-                throw new Exception("User isn't authorized");
+                throw new UserIsNotAuthorizedException();
         }
 
         protected bool IsUserAuthor(Guid userId)

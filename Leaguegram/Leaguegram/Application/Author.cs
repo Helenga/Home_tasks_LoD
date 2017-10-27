@@ -1,14 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Leaguegram.Infrastucture;
+using Leaguegram.Domain;
 
 namespace Leaguegram.Application
 {
-    internal class Author : Admin, IAuthor
+    class Author : Admin, IAuthor
     {
-        public void ChangeUserStatus(Guid userId, Guid chatId)
+        public Author(
+                UsersRepository usersRepository,
+                Account account,
+                Dialogue dialogue,
+                Group group,
+                Channel channel,
+                ChatsRepository chatsRepository) : base(
+                    usersRepository,
+                    account,
+                    dialogue,
+                    group,
+                    channel,
+                    chatsRepository)
+       {
+       }
+
+            public void ChangeUserStatus(Guid userId, Guid chatId)
         {
             _chatsRepository.ChangeParticipantStatus(_account.Id, userId, chatId);
         }

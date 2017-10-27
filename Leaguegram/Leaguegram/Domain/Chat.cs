@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Leaguegram.Common;
 using Leaguegram.Infrastucture;
+using Leaguegram.Exceptions;
 
 namespace Leaguegram.Domain
 {
@@ -15,6 +13,7 @@ namespace Leaguegram.Domain
         {
             _messagesRepository = new List<Message>();
             _id = Guid.NewGuid();
+            _chatsRepository = new ChatsRepository();
             _chatsRepository.AddNewChatToRepository(this);
         }
 
@@ -45,12 +44,18 @@ namespace Leaguegram.Domain
 
         public void AddParticipant(Guid id, Status status = Status.user)
         {
-            _participants.Add(id, status);
+            if (!_participants.ContainsKey(id))
+                _participants.Add(id, status);
+            else
+                throw new ParticipantAlreadyExistException();
         }
 
         public void DeleteParticipant(Guid id)
         {
-            _participants.Remove(id);
+            if (_participants.ContainsKey(id))
+                _participants.Remove(id);
+            else
+                throw new UserIsNotFoundException();
         }
 
         protected Message FindMessageById(Guid id)
@@ -60,7 +65,7 @@ namespace Leaguegram.Domain
                 if (message.Id.Equals(id))
                     return message;
             }
-            throw new Exception("Message doesn't exist");
+            throw new MessageDoesNotExistException();
         }
 
         protected Guid _id;
