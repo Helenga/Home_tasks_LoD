@@ -20,7 +20,7 @@ namespace Leaguegram.Application
                 group,
                 channel,
                 chatsRepository)
-        { }
+        {}
 
         public void DeleteUser(string username, Guid chatId)
         {

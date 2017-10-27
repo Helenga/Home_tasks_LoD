@@ -2,6 +2,7 @@
 using System.Linq;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Leaguegram.Domain;
 using Leaguegram.Infrastucture;
 using Leaguegram.Exceptions;
