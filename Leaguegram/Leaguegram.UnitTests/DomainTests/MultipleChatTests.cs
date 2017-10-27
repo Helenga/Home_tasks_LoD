@@ -69,5 +69,25 @@ namespace Leaguegram.UnitTests.Domain
 
             channel.ChangeUserStatus(user.Id, authorId);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(UserIsNotAuthorizedException))]
+        public void IfUserIsUnauthorized_DeleteMessageFromChat_ShouldThrowException()
+        {
+            ChatsRepository chatsRepository = new ChatsRepository();
+            Guid id = Guid.NewGuid();
+            Channel channel = new Channel(id, "title");
+            var chatId = channel.GetId();
+            Account account1 = new Account("user1", "");
+            Account account2 = new Account("user2", "");
+            account1.AddToDialogues(chatId, "");
+            account2.AddToDialogues(chatId, "");
+            channel.AddParticipant(account1.Id);
+            channel.AddParticipant(account2.Id);
+            var message = new Message("message", account1.Id);
+            chatsRepository.AddMessageToChat(chatId, message);
+
+            chatsRepository.DeleteMessageFromChat(chatId, account2.Id, message.Id);
+        }
     }
 }

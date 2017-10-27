@@ -48,11 +48,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AccountTests.cs" />
-    <Compile Include="Domain\ChatTests.cs" />
-    <Compile Include="Domain\MultipleChatTests.cs" />
-    <Compile Include="Infrastructure\ChatsRepositoryTests.cs" />
-    <Compile Include="Infrastructure\UsersRepositoryTests.cs" />
+    <Compile Include="DomainTests\AccountTests.cs" />
+    <Compile Include="DomainTests\ChatTests.cs" />
+    <Compile Include="DomainTests\MultipleChatTests.cs" />
+    <Compile Include="InfrastructureTests\ChatsRepositoryTests.cs" />
+    <Compile Include="InfrastructureTests\UsersRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

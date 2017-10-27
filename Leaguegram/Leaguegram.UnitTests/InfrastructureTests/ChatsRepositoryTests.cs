@@ -80,9 +80,25 @@ namespace Leaguegram.UnitTests.Infrastructure
             var message = new Message("message", id);
             chatsRepository.AddMessageToChat(chatId, message);
 
-            chatsRepository.DeleteMessageFromChat(chatId, message.Id);
+            chatsRepository.DeleteMessageFromChat(chatId, id, message.Id);
             var result = chatsRepository.SelectMessagesFromChat(chatId);
             CollectionAssert.DoesNotContain(result.ToList(), message);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UserIsNotAuthorizedException))]
+        public void IfUserIsTryingDeleteNotOwnMessage_DeleteMessageFromChat_ShouldThrowException()
+        {
+            ChatsRepository chatsRepository = new ChatsRepository();
+            Account account1 = new Account("user1", "");
+            Account account2 = new Account("user2", "");
+            Dialogue dialogue = new Dialogue(account1.Id, account2.Id);
+            account1.AddToDialogues(dialogue.GetId(), "");
+            account2.AddToDialogues(dialogue.GetId(), "");
+            var message = new Message("message", account1.Id);
+            chatsRepository.AddMessageToChat(dialogue.GetId(), message);
+
+            chatsRepository.DeleteMessageFromChat(dialogue.GetId(), account2.Id, message.Id);
         }
 
         [TestMethod]
