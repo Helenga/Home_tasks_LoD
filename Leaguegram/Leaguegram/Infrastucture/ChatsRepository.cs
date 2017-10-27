@@ -48,10 +48,12 @@ namespace Leaguegram.Infrastucture
             chat.EditMessage(messageId, newText);
         }
 
-        public void DeleteMessageFromChat(Guid chatId, Guid messageId)
+        public void DeleteMessageFromChat(Guid chatId, Guid userId, Guid messageId)
         {
+            
             var chat = FindChatById(chatId);
-            chat.DeleteMessage(messageId);
+            
+            chat.DeleteMessage(userId, messageId);
         }
 
         public void AddUserToChat(Guid chatId, Guid userId)

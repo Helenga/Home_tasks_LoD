@@ -37,9 +37,13 @@ namespace Leaguegram.Domain
             FindMessageById(id).Body = text;
         }
 
-        public void DeleteMessage(Guid id)
+        public virtual void DeleteMessage(Guid userId, Guid messageId)
         {
-            _messagesRepository.Remove(FindMessageById(id));
+            var message = FindMessageById(messageId);
+            if (message.SenderId.Equals(userId))
+                _messagesRepository.Remove(message);
+            else
+                throw new UserIsNotAuthorizedException();
         }
 
         public void AddParticipant(Guid id, Status status = Status.user)

@@ -89,7 +89,7 @@ namespace Leaguegram.Application
         public void DeleteMessageIn(string nameOfDialogue, Guid messageId)
         {
             Guid id = ChooseDialogue(nameOfDialogue);
-            _chatsRepository.DeleteMessageFromChat(id, messageId);
+            _chatsRepository.DeleteMessageFromChat(id, _account.Id, messageId);
         }
 
         public Message CreateMessage(string text)

@@ -48,6 +48,14 @@ namespace Leaguegram.Domain
                 throw new UserIsNotAuthorizedException();
         }
 
+        public override void DeleteMessage(Guid userId, Guid messageId)
+        {
+            if (IsUserAdministrator(userId) || IsUserAuthor(userId))
+                _messagesRepository.Remove(FindMessageById(messageId));
+            else
+                throw new UserIsNotAuthorizedException();
+        }
+
         protected bool IsUserAuthor(Guid userId)
         {
             return _participants[userId].Equals(Status.author);
