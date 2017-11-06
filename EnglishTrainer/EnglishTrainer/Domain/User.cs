@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EnglishTrainer.Infrastructure;
-
 namespace EnglishTrainer.Domain
 {
-    class User
+    internal class User
     {
         public User(Guid id, string name)
         {

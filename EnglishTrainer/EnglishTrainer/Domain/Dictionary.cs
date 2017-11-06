@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EnglishTrainer.Domain
 {
-    class Dictionary : IDictionary
+    internal class Dictionary : IDictionary
     {
         public Dictionary(IDictionary<string, string> words)
         {

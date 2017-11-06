@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using EnglishTrainer.Domain;
 using EnglishTrainer.Infrastructure;
 
 namespace EnglishTrainer.Application
 {
-    class UserService : IUserService
+    internal class UserService : IUserService
     {
         public UserService(IUserRepository userRepository, 
                            IProgressRepository progressRepository)

@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using EnglishTrainer.Domain;
 using EnglishTrainer.Infrastructure;
 
 namespace EnglishTrainer.Application
 {
-    class TrainerService : ITrainerService
+    internal class TrainerService : ITrainerService
     {
         public TrainerService(IDictionaryRepository dictionaryRepository,
                              ILearnedWordsRepository learnedWordsRepository,
                              IWordsOnLearningRepository wordsOnLearningRepository, 
-                             IWordsHandler wordsHandler)
+                             IWordsHandler wordsHandler,
+                             IUserActionsHandler userActionsHandler)
         {
             _dictionaryRepository = dictionaryRepository;
             _learnedWordsRepository = learnedWordsRepository;
             _wordsOnLearningRepository = wordsOnLearningRepository;
             _wordsHandler = wordsHandler;
+            _userActionsHandler = userActionsHandler;
         }
 
         public void ChooseDictionaryForLearning(Guid dictionaryId)
@@ -46,19 +45,13 @@ namespace EnglishTrainer.Application
                 else
                 {
                     yield return combination;
-                    var answer = GetAnswer();
+                    var answer = _userActionsHandler.GetAnswer();
                     if (AnswerIsRight(answer, combination))
                     {
                         _wordsHandler.UpdateStatusOfWord(combination.Key);
                     }
                 }
             }
-        }
-
-        // ОТКУДА ПОЛУЧАТЬ ОТВЕТ (ОБРАБОТЧИК СОБЫТИЙ)
-        private bool GetAnswer()
-        {
-            return default(bool);
         }
 
         private KeyValuePair<string, string> GenerateCombination()
@@ -89,5 +82,6 @@ namespace EnglishTrainer.Application
         private readonly IDictionaryRepository _dictionaryRepository;
         private readonly ILearnedWordsRepository _learnedWordsRepository;
         private readonly IWordsOnLearningRepository _wordsOnLearningRepository;
+        private readonly IUserActionsHandler _userActionsHandler;
     }
 }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace EnglishTrainer.Domain
 {
-    class WordOnLearning : IWordOnLearning
+    internal class WordOnLearning : IWordOnLearning
     {
         public WordOnLearning(KeyValuePair<string, string> wordToLearn)
         {
