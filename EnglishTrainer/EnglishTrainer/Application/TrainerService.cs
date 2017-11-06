@@ -41,7 +41,7 @@ namespace EnglishTrainer.Application
             {
                 var combination = GenerateCombination();
                 if (_wordsHandler.WordIsLearned(combination.Key))
-                    _dictionary.DeleteLearnedWord(combination.Key);
+                    _dictionary.DeleteLearnedWord(combination.Key); 
                 else
                 {
                     yield return combination;

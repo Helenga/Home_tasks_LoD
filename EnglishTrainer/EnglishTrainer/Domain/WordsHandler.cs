@@ -34,7 +34,7 @@ namespace EnglishTrainer.Domain
             return _learnedWords;
         }
 
-        public IList<WordOnLearning> GetWordsOnLearning()
+        public IEnumerable<WordOnLearning> GetWordsOnLearning()
         {
             return _wordsOnLearning;
         }

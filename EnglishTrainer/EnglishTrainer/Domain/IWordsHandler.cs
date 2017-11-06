@@ -10,7 +10,7 @@ namespace EnglishTrainer.Domain
 
         bool WordIsLearned(string word);
 
-        IList<WordOnLearning> GetWordsOnLearning();
+        IEnumerable<WordOnLearning> GetWordsOnLearning();
 
         IDictionary<string, string> GetLearnedWords();
 
