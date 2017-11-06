@@ -10,7 +10,7 @@ namespace EnglishTrainer.Infrastructure
 {
     interface IProgressRepository
     {
-        void UpdateProgressForUser(Guid userId);
+        void UpdateProgressForUser<T>(Guid userId, T words);
 
         IEnumerable<T> GetProgressForUser<T>(Guid userId);
     }

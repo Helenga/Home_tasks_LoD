@@ -12,12 +12,13 @@ namespace EnglishTrainer.Application
     class TrainerService : ITrainerService
     {
         public TrainerService(IDictionaryRepository dictionaryRepository,
-                             IProgressRepository progressRepository,
+                             ILearnedWordsRepository learnedWordsRepository,
+                             IWordsOnLearningRepository wordsOnLearningRepository, 
                              IWordsHandler wordsHandler)
         {
             _dictionaryRepository = dictionaryRepository;
-            _learnedWordsRepository = progressRepository;
-            _wordsOnLearningRepository = progressRepository;
+            _learnedWordsRepository = learnedWordsRepository;
+            _wordsOnLearningRepository = wordsOnLearningRepository;
             _wordsHandler = wordsHandler;
         }
 
@@ -29,8 +30,10 @@ namespace EnglishTrainer.Application
 
         public void SaveProgress(Guid userId)
         {
-            _learnedWordsRepository.UpdateProgressForUser(userId);
-            _wordsOnLearningRepository.UpdateProgressForUser(userId);
+            var wordsOnLearning = _wordsHandler.GetWordsOnLearning();
+            var learnedWords = _wordsHandler.GetLearnedWords();
+            _learnedWordsRepository.UpdateProgressForUser(userId, learnedWords);
+            _wordsOnLearningRepository.UpdateProgressForUser(userId, wordsOnLearning);
         }
 
         public IEnumerable<KeyValuePair<string, string>> StartTraining()
@@ -84,7 +87,7 @@ namespace EnglishTrainer.Application
         private Dictionary _dictionary;
         private readonly IWordsHandler _wordsHandler;
         private readonly IDictionaryRepository _dictionaryRepository;
-        private readonly IProgressRepository _learnedWordsRepository;
-        private readonly IProgressRepository _wordsOnLearningRepository;
+        private readonly ILearnedWordsRepository _learnedWordsRepository;
+        private readonly IWordsOnLearningRepository _wordsOnLearningRepository;
     }
 }
