@@ -23,10 +23,7 @@ namespace EnglishTrainerApp
 
         private static void Waiter()
         {
-            while (!pressed)
-            {
-                
-            }
+            if (pressed)
             Data.trainerService.AnswerHandler(answerValue, passingPair);
         }
 
@@ -85,7 +82,6 @@ namespace EnglishTrainerApp
             }
         }
 
-        private IEnumerable<KeyValuePair<string, string>> combination;
         private static bool answerValue;
         private static bool pressed;
         private static KeyValuePair<string, string> passingPair;

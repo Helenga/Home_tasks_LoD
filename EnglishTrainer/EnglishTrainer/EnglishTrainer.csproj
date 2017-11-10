@@ -52,8 +52,6 @@
     <Compile Include="Application\UserService.cs" />
     <Compile Include="Domain\Dictionary.cs" />
     <Compile Include="Domain\IDictionary.cs" />
-    <Compile Include="Domain\IUserActionsHandler.cs" />
-    <Compile Include="UserActionsHandler.cs" />
     <Compile Include="Domain\IWordOnLearning.cs" />
     <Compile Include="Domain\IWordsHandler.cs" />
     <Compile Include="Domain\User.cs" />
