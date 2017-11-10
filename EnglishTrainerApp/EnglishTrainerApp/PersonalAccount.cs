@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 
+using EnglishTrainer.InfrastructureImplementation;
+
 namespace EnglishTrainerApp
 {
     public partial class PersonalAccount : Form

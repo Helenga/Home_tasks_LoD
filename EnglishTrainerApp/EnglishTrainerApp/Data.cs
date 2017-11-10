@@ -1,6 +1,7 @@
-﻿using EnglishTrainer.Infrastructure;
-using EnglishTrainer.Application;
+﻿using EnglishTrainer.Application;
 using EnglishTrainer.Domain;
+
+using EnglishTrainer.Infrastructure;
 
 namespace EnglishTrainerApp
 {

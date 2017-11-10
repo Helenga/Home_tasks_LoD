@@ -7,7 +7,9 @@ namespace EnglishTrainer.Application
 {
     internal class UserService : IUserService
     {
-        public UserService(UserRepository userRepository, LearnedWordsRepository learnedWordsRepository, WordsOnLearningRepository wordsOnLearningRepository)
+        public UserService(UserRepository userRepository, 
+                           LearnedWordsRepository learnedWordsRepository, 
+                           WordsOnLearningRepository wordsOnLearningRepository)
         {
             _userRepository = userRepository;
             _learnedWordsRepository = learnedWordsRepository;
