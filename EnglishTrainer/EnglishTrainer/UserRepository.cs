@@ -9,7 +9,7 @@ using EnglishTrainer.Domain;
 
 namespace EnglishTrainer.Infrastructure
 {
-    class UserRepository : IUserRepository
+    internal class UserRepository : IUserRepository
     {
         public UserRepository(string filePath)
         {

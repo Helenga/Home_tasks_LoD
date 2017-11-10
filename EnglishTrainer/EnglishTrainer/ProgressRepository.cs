@@ -5,7 +5,7 @@ using System.IO;
 
 namespace EnglishTrainer.Infrastructure
 {
-    class ProgressRepository : IProgressRepository
+    internal class ProgressRepository : IProgressRepository
     {
         public ProgressRepository(string filePath)
         {

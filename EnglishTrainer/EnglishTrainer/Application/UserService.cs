@@ -7,15 +7,6 @@ namespace EnglishTrainer.Application
 {
     internal class UserService : IUserService
     {
-        /*public UserService(IUserRepository userRepository, 
-                           ILearnedWordsRepository learnedWordsRepository,
-                           IWordsOnLearningRepository wordsOnLearningRepository)
-        {
-            _userRepository = userRepository;
-            _learnedWordsRepository = learnedWordsRepository;
-            _wordsOnLearningRepository = wordsOnLearningRepository;
-        }*/
-
         public UserService(UserRepository userRepository, LearnedWordsRepository learnedWordsRepository, WordsOnLearningRepository wordsOnLearningRepository)
         {
             _userRepository = userRepository;
@@ -37,9 +28,6 @@ namespace EnglishTrainer.Application
             return id;
         }
 
-        /*private readonly IUserRepository _userRepository;
-        private readonly ILearnedWordsRepository _learnedWordsRepository;
-        private readonly IWordsOnLearningRepository _wordsOnLearningRepository;*/
         private UserRepository _userRepository;
         private LearnedWordsRepository _learnedWordsRepository;
         private WordsOnLearningRepository _wordsOnLearningRepository;

@@ -2,8 +2,6 @@
 using EnglishTrainer.Application;
 using EnglishTrainer.Domain;
 
-// DELETE PROGRESS REPOSITORY FROM USERSSERVICE
-
 namespace EnglishTrainerApp
 {
     static class Data
@@ -23,7 +21,6 @@ namespace EnglishTrainerApp
             dictionaryRepository,
             learnedWordsRepository,
             wordsOnLearningRepository,
-            new WordsHandler(),
-            new UserActionsHandler());
+            new WordsHandler());
     }
 }

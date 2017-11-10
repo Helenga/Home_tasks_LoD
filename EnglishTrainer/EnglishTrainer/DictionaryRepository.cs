@@ -4,7 +4,7 @@ using System.IO;
 
 namespace EnglishTrainer.Infrastructure
 {
-    class DictionaryRepository : IDictionaryRepository
+    internal class DictionaryRepository : IDictionaryRepository
     {
         public DictionaryRepository(string folderPath)
         {

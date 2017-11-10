@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using EnglishTrainer.Domain;
 using EnglishTrainer.Infrastructure;
 
@@ -8,26 +7,15 @@ namespace EnglishTrainer.Application
 {
     internal class TrainerService : ITrainerService
     {
-        /*public TrainerService(IDictionaryRepository dictionaryRepository,
-                             ILearnedWordsRepository learnedWordsRepository,
-                             IWordsOnLearningRepository wordsOnLearningRepository, 
-                             IWordsHandler wordsHandler,
-                             IUserActionsHandler userActionsHandler)
+        public TrainerService(DictionaryRepository dictionaryRepository, 
+                              LearnedWordsRepository learnedWordsRepository, 
+                              WordsOnLearningRepository wordsOnLearningRepository, 
+                              WordsHandler wordsHandler)
         {
             _dictionaryRepository = dictionaryRepository;
             _learnedWordsRepository = learnedWordsRepository;
             _wordsOnLearningRepository = wordsOnLearningRepository;
             _wordsHandler = wordsHandler;
-            _userActionsHandler = userActionsHandler;
-        }*/
-
-        public TrainerService(DictionaryRepository dictionaryRepository, LearnedWordsRepository learnedWordsRepository, WordsOnLearningRepository wordsOnLearningRepository, WordsHandler wordsHandler, UserActionsHandler userActionsHandler)
-        {
-            _dictionaryRepository = dictionaryRepository;
-            _learnedWordsRepository = learnedWordsRepository;
-            _wordsOnLearningRepository = wordsOnLearningRepository;
-            _wordsHandler = wordsHandler;
-            _userActionsHandler = userActionsHandler;
         }
 
         public void ChooseDictionaryForLearning(string dictionaryName)
@@ -60,7 +48,6 @@ namespace EnglishTrainer.Application
 
         public void AnswerHandler(bool answer, KeyValuePair<string, string> combination)
         {
-            //var answer = _userActionsHandler.GetAnswer();
             if (AnswerIsRight(answer, combination))
                 _wordsHandler.UpdateStatusOfWord(combination.Key);
         }
@@ -89,15 +76,9 @@ namespace EnglishTrainer.Application
         }
 
         private Dictionary _dictionary;
-        /*private readonly IWordsHandler _wordsHandler;
-        private readonly IDictionaryRepository _dictionaryRepository;
-        private readonly ILearnedWordsRepository _learnedWordsRepository;
-        private readonly IWordsOnLearningRepository _wordsOnLearningRepository;
-        private readonly IUserActionsHandler _userActionsHandler;*/
         private DictionaryRepository _dictionaryRepository;
         private LearnedWordsRepository _learnedWordsRepository;
         private WordsOnLearningRepository _wordsOnLearningRepository;
         private WordsHandler _wordsHandler;
-        private UserActionsHandler _userActionsHandler;
     }
 }
