@@ -16,7 +16,8 @@ namespace EnglishTrainerApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
-            initializeFiles();
+            if (!Directory.Exists(rootDirectoryApp))
+                initializeFiles();
         }
 
         private static void initializeFiles()
