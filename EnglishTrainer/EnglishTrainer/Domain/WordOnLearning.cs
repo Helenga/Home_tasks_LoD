@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System;
 
 namespace EnglishTrainer.Domain
 {
+    [Serializable]
     internal class WordOnLearning : IWordOnLearning
     {
         public WordOnLearning(KeyValuePair<string, string> wordToLearn)

@@ -7,12 +7,20 @@ namespace EnglishTrainer.Application
 {
     internal class UserService : IUserService
     {
-        public UserService(IUserRepository userRepository, 
-                           IProgressRepository progressRepository)
+        /*public UserService(IUserRepository userRepository, 
+                           ILearnedWordsRepository learnedWordsRepository,
+                           IWordsOnLearningRepository wordsOnLearningRepository)
         {
             _userRepository = userRepository;
-            _learnedWordsRepository = progressRepository;
-            _wordsOnLearningRepository = progressRepository;
+            _learnedWordsRepository = learnedWordsRepository;
+            _wordsOnLearningRepository = wordsOnLearningRepository;
+        }*/
+
+        public UserService(UserRepository userRepository, LearnedWordsRepository learnedWordsRepository, WordsOnLearningRepository wordsOnLearningRepository)
+        {
+            _userRepository = userRepository;
+            _learnedWordsRepository = learnedWordsRepository;
+            _wordsOnLearningRepository = wordsOnLearningRepository;
         }
 
         public Guid Login(string name)
@@ -29,8 +37,11 @@ namespace EnglishTrainer.Application
             return id;
         }
 
-        private readonly IUserRepository _userRepository;
-        private readonly IProgressRepository _learnedWordsRepository;
-        private readonly IProgressRepository _wordsOnLearningRepository;
+        /*private readonly IUserRepository _userRepository;
+        private readonly ILearnedWordsRepository _learnedWordsRepository;
+        private readonly IWordsOnLearningRepository _wordsOnLearningRepository;*/
+        private UserRepository _userRepository;
+        private LearnedWordsRepository _learnedWordsRepository;
+        private WordsOnLearningRepository _wordsOnLearningRepository;
     }
 }

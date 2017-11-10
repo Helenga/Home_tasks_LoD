@@ -8,7 +8,7 @@ namespace EnglishTrainer.Application
 {
     internal class TrainerService : ITrainerService
     {
-        public TrainerService(IDictionaryRepository dictionaryRepository,
+        /*public TrainerService(IDictionaryRepository dictionaryRepository,
                              ILearnedWordsRepository learnedWordsRepository,
                              IWordsOnLearningRepository wordsOnLearningRepository, 
                              IWordsHandler wordsHandler,
@@ -19,11 +19,20 @@ namespace EnglishTrainer.Application
             _wordsOnLearningRepository = wordsOnLearningRepository;
             _wordsHandler = wordsHandler;
             _userActionsHandler = userActionsHandler;
+        }*/
+
+        public TrainerService(DictionaryRepository dictionaryRepository, LearnedWordsRepository learnedWordsRepository, WordsOnLearningRepository wordsOnLearningRepository, WordsHandler wordsHandler, UserActionsHandler userActionsHandler)
+        {
+            _dictionaryRepository = dictionaryRepository;
+            _learnedWordsRepository = learnedWordsRepository;
+            _wordsOnLearningRepository = wordsOnLearningRepository;
+            _wordsHandler = wordsHandler;
+            _userActionsHandler = userActionsHandler;
         }
 
-        public void ChooseDictionaryForLearning(Guid dictionaryId)
+        public void ChooseDictionaryForLearning(string dictionaryName)
         {
-            var selectedDictionary = _dictionaryRepository.ChooseDictionary(dictionaryId);
+            var selectedDictionary = _dictionaryRepository.ChooseDictionary(dictionaryName);
             _dictionary = new Dictionary(selectedDictionary);
         }
 
@@ -45,13 +54,15 @@ namespace EnglishTrainer.Application
                 else
                 {
                     yield return combination;
-                    var answer = _userActionsHandler.GetAnswer();
-                    if (AnswerIsRight(answer, combination))
-                    {
-                        _wordsHandler.UpdateStatusOfWord(combination.Key);
-                    }
                 }
             }
+        }
+
+        public void AnswerHandler(bool answer, KeyValuePair<string, string> combination)
+        {
+            //var answer = _userActionsHandler.GetAnswer();
+            if (AnswerIsRight(answer, combination))
+                _wordsHandler.UpdateStatusOfWord(combination.Key);
         }
 
         private KeyValuePair<string, string> GenerateCombination()
@@ -78,10 +89,15 @@ namespace EnglishTrainer.Application
         }
 
         private Dictionary _dictionary;
-        private readonly IWordsHandler _wordsHandler;
+        /*private readonly IWordsHandler _wordsHandler;
         private readonly IDictionaryRepository _dictionaryRepository;
         private readonly ILearnedWordsRepository _learnedWordsRepository;
         private readonly IWordsOnLearningRepository _wordsOnLearningRepository;
-        private readonly IUserActionsHandler _userActionsHandler;
+        private readonly IUserActionsHandler _userActionsHandler;*/
+        private DictionaryRepository _dictionaryRepository;
+        private LearnedWordsRepository _learnedWordsRepository;
+        private WordsOnLearningRepository _wordsOnLearningRepository;
+        private WordsHandler _wordsHandler;
+        private UserActionsHandler _userActionsHandler;
     }
 }

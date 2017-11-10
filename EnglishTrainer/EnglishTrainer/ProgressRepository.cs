@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 using System.IO;
 
 namespace EnglishTrainer.Infrastructure
@@ -14,17 +12,38 @@ namespace EnglishTrainer.Infrastructure
             _filePath = filePath;
         }
 
-        public IEnumerable<T> GetProgressForUser<T>(Guid userId)
+        public IEnumerable<dynamic> GetProgressForUser(Guid userId)
         {
-            throw new NotImplementedException();
+            var progress = LoadProgress();
+            if (progress.ContainsKey(userId))
+                return progress[userId];
+            else
+                return new List<dynamic>();
+                
         }
 
         public void UpdateProgressForUser<T>(Guid userId, T words)
         {
-            /*var serializedId = JsonConvert.SerializeObject(userId);
-            var serializedWords = JsonConvert.SerializeObject(words);
-            var serialized = serializedId + serializedWords;
-            File.WriteAllText(_filePath, serialized);*/
+            Dictionary<Guid, T> progress = new Dictionary<Guid, T>();
+            progress.Add(userId, words);
+            var serialzed = JsonConvert.SerializeObject(progress);
+            File.WriteAllText(_filePath, serialzed);
+        }
+
+        private Dictionary<Guid, dynamic> LoadProgress()
+        {
+            try
+            {
+                var raws = File.ReadAllText(_filePath);
+                if (raws == "")
+                    return new Dictionary<Guid, dynamic>();
+                var progress = JsonConvert.DeserializeObject<Dictionary<Guid, dynamic>>(raws);
+                return progress;
+            }
+            catch (FileNotFoundException)
+            {
+                return null;
+            }
         }
 
         private string _filePath;

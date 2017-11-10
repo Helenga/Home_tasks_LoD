@@ -5,16 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EnglishTrainer")]
+[assembly: AssemblyTitle("EnglishTrainerApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EnglishTrainer")]
+[assembly: AssemblyProduct("EnglishTrainerApp")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("EnglishTrainer.UnitTests")]
-[assembly: InternalsVisibleTo("EnglishTrainerApp")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
@@ -22,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("20946a37-6ee2-4192-8c4a-d71851e696ac")]
+[assembly: Guid("8349f92d-8e84-4e08-a774-2afc90abfe35")]
 
 // Version information for an assembly consists of the following four values:
 //

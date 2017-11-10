@@ -7,6 +7,6 @@ namespace EnglishTrainer.Infrastructure
     {
         void UpdateProgressForUser<T>(Guid userId, T words);
 
-        IEnumerable<T> GetProgressForUser<T>(Guid userId);
+        IEnumerable<dynamic> GetProgressForUser(Guid userId);
     }
 }

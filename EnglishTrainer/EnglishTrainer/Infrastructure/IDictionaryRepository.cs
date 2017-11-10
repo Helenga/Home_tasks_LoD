@@ -7,7 +7,7 @@ namespace EnglishTrainer.Infrastructure
     {
         Dictionary<string, string> LoadNewDictionary<T>(T dictionaryPath);
 
-        Dictionary<string, string> ChooseDictionary(Guid dictionaryId);
+        Dictionary<string, string> ChooseDictionary(string dictionaryName);
 
         IEnumerable<string> GetExistingDictionaries();
     }

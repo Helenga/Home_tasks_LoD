@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+
 using EnglishTrainer.Domain;
+
 
 namespace EnglishTrainer.Infrastructure
 {
@@ -16,12 +18,38 @@ namespace EnglishTrainer.Infrastructure
 
         public Guid FindUserByName(string name)
         {
-            throw new NotImplementedException();
+            var users = LoadUsers();
+            var foundUser = users.First(user => user.Name == name);
+            return foundUser.Id;
         }
 
         public void SaveNewUser(User newUser)
         {
-            throw new NotImplementedException();
+            var users = LoadUsers();
+            users.Add(newUser);
+            SaveUsers(users);
+        }
+
+        private List<User> LoadUsers()
+        {
+            try
+            {
+                var raws = File.ReadAllText(_filePath);
+                if (raws == "")
+                    return new List<User>();
+                var users = JsonConvert.DeserializeObject<List<User>>(raws);
+                return users;
+            }
+            catch (FileNotFoundException)
+            {
+                return new List<User>();
+            }
+        }
+
+        private void SaveUsers(List<User> users)
+        {
+            var serialized = JsonConvert.SerializeObject(users);
+            File.WriteAllText(_filePath, serialized);
         }
 
         private string _filePath;

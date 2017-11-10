@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EnglishTrainer.Domain
 {
@@ -10,11 +6,18 @@ namespace EnglishTrainer.Domain
     {
         public User(Guid id, string name)
         {
-            _id = id;
-            _name = name;
+            Id = id;
+            Name = name;
         }
 
-        private readonly Guid _id;
-        private string _name;
+        public Guid GetId(string name)
+        {
+            if (Name == name)
+                return Id;
+            throw new ArgumentException("Name is not correct");
+        }
+
+        public Guid Id { get; }
+        public string Name { get; }
     }
 }

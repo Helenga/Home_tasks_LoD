@@ -2,10 +2,17 @@
 {
     internal class UserActionsHandler : IUserActionsHandler
     {
+
+        public void SetAnswer(bool answer)
+        {
+            _answer = answer;
+        }
+
         public bool GetAnswer()
         {
-            // EVENT HANDLER
-            return default(bool);
+            return _answer;
         }
+
+        private bool _answer;
     }
 }

@@ -7,7 +7,7 @@ namespace EnglishTrainer.Application
     {
         IEnumerable<KeyValuePair<string, string>> StartTraining();
 
-        void ChooseDictionaryForLearning(Guid dictionaryId);
+        void ChooseDictionaryForLearning(string dictionaryName);
 
         void SaveProgress(Guid userId);
     }
