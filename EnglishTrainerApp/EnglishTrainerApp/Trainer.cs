@@ -14,16 +14,16 @@ namespace EnglishTrainerApp
             InitializeComponent(); 
         }
 
-        private void Bw_pressedButtonWaiter(object sender, DoWorkEventArgs e)
+       /* private void Bw_pressedButtonWaiter(object sender, DoWorkEventArgs e)
         {
             Waiter();
-        }
+        }*/
 
        // private Thread pressedButtonWaiter = new Thread(Waiter);
 
         private static void Waiter()
         {
-            if (pressed)
+            while (!pressed)
             Data.trainerService.AnswerHandler(answerValue, passingPair);
         }
 
@@ -61,6 +61,7 @@ namespace EnglishTrainerApp
                 bw.RunWorkerAsync();
                 */
                 Task task = new Task(Waiter);
+                task.ConfigureAwait(pressed);
                 task.Start();
                 task.Wait(); 
 
