@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace EnglishTrainerApp
@@ -18,6 +16,18 @@ namespace EnglishTrainerApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
+            initializeFiles();
         }
+
+        private static void initializeFiles()
+        {
+            Directory.CreateDirectory(rootDirectoryApp);
+            Directory.CreateDirectory(rootDirectoryApp + $"/Dictionaries");
+            File.Create(rootDirectoryApp + $"/learnedWords.json");
+            File.Create(rootDirectoryApp + $"/wordsOnLearning.json");
+            File.Create(rootDirectoryApp + $"/users.json");
+        }
+
+        private static string rootDirectoryApp = "Repository";
     }
 }
